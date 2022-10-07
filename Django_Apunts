@@ -1,1 +1,5 @@
+Django ens permet treballar per moduls/apps que consisteixen idealment en subprojectes django independents. 
 
+Applications del projecte:
+  - Usuari (Registre, Login, Sessió)
+  - Pelicula(Filtratge, Mostreig)
