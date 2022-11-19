@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Document</title>
+</head>
+<body>
+   <h1>Hola, aquesta es la landing page</h1> 
+   <!--cercador -->
+   <form method="GET"> {%csrf_token%} <!--security key csrf--> 
+        <input type="text" id="title" name="title" placeholder="Ingrese una pelicula">
+
+        <div>
+          <label for="viewCountMin">Minimum View Count</label>
+          <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="view_count_min">
+        </div>
+        <div>
+          <label for="viewCountMax">Maximum View Count</label>
+          <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="view_count_max">
+        </div>
+        <div>
+          <label for="publishDateMin">Publish date minimum</label>
+          <input type="date" class="form-control" id="publishDateMin" name="date_min">
+        </div>
+        <div>
+          <label for="publishDateMax">Publish date maximum</label>
+          <input type="date" class="form-control" id="publishDateMax" name="date_max">
+        </div>
+
+
+        <div>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option selected>all</option>
+            {% for cat in info.CategoryList %}
+            <option value="{{ cat }}">{{ cat }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div>
+          <label for="language">Language</label>
+          <select id="language" name="language">
+            <option selected>all</option>
+            {% for language in info.LanguageList %}
+            <option value="{{ language }}">{{ language }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+
+        <button type="Filtrar">Buscar</button>
+
+    </form>
+    
+    <!--filtres-->
+
+    
+
+    <!--llista de pelicules-->
+   <ul>
+
+        {%for pelicula in info.MovieList%}
+        <li>{{pelicula}}</li>
+        {%endfor%}
+   </ul>
+   
+   
+  
+</body>
+</html>
