@@ -5,4 +5,9 @@ class projectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
-        #read_only_fields = ('id',)
+        
+        
+class InfoSerializer(serializers.Serializer):
+    categoryList = serializers.CharField(max_length=200)
+    languageList = serializers.CharField(max_length=200)
+    
