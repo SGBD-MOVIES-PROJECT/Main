@@ -6,12 +6,15 @@ from elasticsearch_dsl.connections import connections
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import A, MultiSearch, Search,Q,A
 from rest_framework.generics import  ListAPIView
-from .serializers import projectSerializer
+from .serializers import projectSerializer, InfoSerializer
 from .models import Movie
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
-
+import django_filters
+from rest_framework import serializers
+import json
+from datetime import datetime
 
 class PeliculaListView(ListView):
     template_name = "../templates/pelicula/home.html"
@@ -40,16 +43,21 @@ class PeliculaListView(ListView):
        
        
         # ms = ms.add(Search().filter("term", original_language="it"))
-        ms =ms.add(s)
+        
             
         #ms = ms.add(Search().filter("term", original_title=name))
-        responses=ms.execute()
+        # Count search results
+        total = s.count()
+
+        # What does this step do?
+        s = s[0:total]
+        responses= s.execute()
+
        
         #MovieList
         MovieList=[]
         for response in responses:
-            for hit in response:
-                MovieList.append((hit.original_title +" | "+ hit.original_language +" | "+ hit.genre +" | "+ hit.release_date))
+                MovieList.append(response)
        
         
         #Aggregate Search
@@ -82,37 +90,125 @@ class PeliculaListView(ListView):
 # Create your views here.
 
 class PeliculaListAPIView(ListAPIView):
-    
+   
     serializer_class = projectSerializer
     def get_queryset(self):   
-        return Movie.objects.all()
+        return Movie.objects.all() 
+    
+    
     
 class PeliculaSearchAPIView(ListAPIView):
     serializer_class = projectSerializer
     def get_queryset(self):   
-        kword = self.kwargs['kword']
-        print(kword)
-        #print("hola" + kword)
-       # s = Search(index="movies")
-       # s= s.query("term", original_language=kword)
-       # return s.execute()
-        return []
+        
+        #captura de parametres per http request
+        category=self.request.GET.get('genre')
+        name=self.request.GET.get('original_title')
+        language=self.request.GET.get('original_language')
+        min_date=self.request.GET.get('min_date') #yyyymmdd
+        max_date=self.request.GET.get('max_date')
+       
+        print(category)
+        print(name)
+        print(language)
+        
+        
+        #creacio de la query
+        #MultiSerch
+         
+        ms=MultiSearch(index='movies')
+        s=Search()
+        
+        #filtres de la query
+        
+        if min_date is not None:
+            minDate=datetime.strptime(min_date, '%Y%m%d').strftime('%Y-%m-%d')
+            s=s.filter("range", release_date={"gte":minDate})
+            
+        if max_date is not None:
+            maxDate=datetime.strptime(max_date, '%Y%m%d').strftime('%Y-%m-%d')
+            s=s.filter("range", release_date={"lte":maxDate})  
+            
+        if category is not None:
+            s=s.filter("term", genre=category)    
+            
+        if language is not None:
+            s=s.filter("term", original_language=language)
+        
+        
+        #query de la cerca
+               
+        if name is not None:
+            s=s.query("match", original_title=name)
+        else:
+            s=s.query("match_all")
+        
+        
+        # Count search results
+        total = s.count()
+        s = s[0:total]
+        
+        
+        ms =ms.add(s)
+        responses=ms.execute()
+        responses=responses[0:10000]
+        print()
+        
+        #MovieList
+        #MovieList
+        queryset=[]
+        for response in responses:
+            for hit in response:
+                movieJson={}
+                movieJson['budget']=hit.budget
+                movieJson['genre']=hit.genre
+                movieJson['original_language']=hit.original_language
+                movieJson['original_title']=hit.original_title
+                movieJson['overview']=hit.overview
+                movieJson['production_company']=hit.production_company
+                movieJson['production_country']=hit.production_country
+                movieJson['release_date']=hit.release_date
+                movieJson['revenue']=hit.revenue
+                movieJson['runtime']=hit.runtime
+                queryset.append(movieJson)
+       
+       
+        
+        #creacio del queryset
+        return queryset
+  
+        
   
   
-class book(DocumentViewSet):
+class InfoAPIList(ListAPIView):
+    serializer_class = InfoSerializer
+    def get_queryset(self):
+        #Aggregate Search
+        s = Search(index="movies")
+        s.query('match_all')
+        s.aggs.bucket('by_genre', 'terms', field='genre.keyword',)
+        s.aggs.bucket('by_language', 'terms', field='original_language.keyword',)
+        s = s.execute()
+          
+        #Category Aggregation
+        CategoryList=[]
+        for aggregation in s.aggregations.by_genre.buckets: 
+            CategoryList.append(aggregation.key)
+            
+        #Language Aggregation
+        LanguageList=[]
+        for aggregation in s.aggregations.by_language.buckets:
+            LanguageList.append(aggregation.key)
+       
+        
+        
+          
+        #creacio del queryset   
+        queryset={"languageList":LanguageList, "categoryList":CategoryList}
+        x=[]   
+        x.append(queryset)
+        print(x)
+        return x
+        
 
-    document = CarDocument
-    serializer_class = projectSerializer
-    lookup_field = 'id'
-
-    filter_backends = [
-       SearchFilter, OrderingFilter
-    ]
-
-    simple_query_string_search_fields = {
-        'title': {'boost': 4},
-        'summary': {'boost': 2},
-        'description': None,
-    }
-
-    #ordering = ('_score', 'id', 'title', 'price',)
+  

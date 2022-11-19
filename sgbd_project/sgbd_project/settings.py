@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-0k00n83k1y!5bb5%d(v_j==8iucxnbnv^js5+-ms4t&9a_x2oo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['81.184.5.175','127.0.0.1']
 
 
 # Application definition
@@ -48,6 +48,14 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
 ]
+
+#DJANGO-FILTERS
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        
+    ),
+}
 
 #ELASTICSEARCH
 
