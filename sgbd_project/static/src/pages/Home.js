@@ -3,46 +3,42 @@ import { Link } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import { FilterMovies } from '../components/FilterMovies';
 import { DemoCarousel } from '../components/DemoCarousel';
-import SearchBar from "../components/SearchBar";
+import { DisplayJson } from '../components/DisplayJson';
+import data from "../data.json"
 
 function Home() {
   const [name, setName] = useState('');
-      
-      const handleSubmit = (e) => {
-      
-          e.preventDefault();
+  const getHeadings = () => {
+    return Object.keys(data[0]);
+  }
+  const handleSubmit = (e) => {
   
-          console.log(`Form submitted, ${name}`); 
-      }
+      e.preventDefault();
+
+      console.log(`Form submitted, ${name}`); 
+  }
   return (
 
     <>
-      {/* <div className='home'>
-       <h1>Home </h1>
-      </div> */}
-      
-      <div className='main'> 
-      <SearchBar />
+      <div className='main'>
         <FilterMovies/>
-       
-
-            {/* <form onSubmit = {handleSubmit} className = 'boto' >
+        <div className='table'>
+          <DisplayJson theadData={getHeadings()} tbodyData={data}/>
+        </div>  
+        <div className='carousel'>
+          <DemoCarousel /> 
+        </div>
+      </div>
+    </>          
+  );
+      
+}
+{/* <form onSubmit = {handleSubmit} className = 'boto' >
                 <input onChange = {(e) => setName(e.target.value)} value = {name}></input> 
                 <Link to = "./support">
                   <button type = 'submit'>Click to submit</button>
                 </Link>
             </form> */}
-        <div className='carousel'>
-          <DemoCarousel /> 
-        </div>
-      </div>
-    
-    </>    
-          
-  );
-      
-}
-
 export default Home;
 
 

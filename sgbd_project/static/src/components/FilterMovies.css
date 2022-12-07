@@ -1,6 +1,110 @@
+.full-container{
+  padding: 1rem;
+}
 .filterMovies {
   padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.filters-container{
+  display: flex;
 }
 .main{
     padding: 10px;
+}
+.filters-title{
+  padding-top: 15px;
+}
+
+.searchbar-container{
+  width: 100%;
+  padding-left: calc(4px + 0.5rem);
+}
+
+.title{
+  margin-top: 10px;
+  border-radius: 5px;
+  border-color: rgb(0, 0, 88);
+  width: calc(100% - 27px );
+  border-width: 0.5px;
+  min-height: 36px;
+}
+
+.year-container, .duration-container, .budget-container{
+  float: left;
+  width: 33%;
+  padding: 0.5rem;
+}
+
+.year, .time, .budget, .language, .genre{
+  padding: 5px;
+  margin: 10px;
+  margin-left: 0;
+  border-radius: 5px;
+  border-color: rgb(0, 0, 88);
+  width: 100%;
+  border-width: 0.5px;
+  min-height: 36px;
+}
+.years-filters-container{
+  height: 50%;
+}
+
+.year-title{
+  width: 45%;
+  float: left;
+}
+#year-title1{
+  margin-right: calc(10% - 9px);
+  margin-left: 4px;
+}
+
+.time{
+  border-style: inset;
+}
+.bottom-duration{
+    margin-top: 6px;
+}
+#bottom-duration{
+  margin-top: 17px;
+}
+.budgets{
+  height: 50%;
+}
+.budget-title{
+    width: 45%;
+  float: left;
+}
+#budget-title1{
+  margin-right: calc(10% - 9px);
+  margin-left: 4px;
+}
+.budget{
+  border-style: inset;
+
+}
+.submit-button-div{
+  padding: 20px;
+  text-align-last: center;
+  width: 100%;
+}
+.submit-button{
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  width: 15%;
+  background-color: rgb(0,0,88);
+  color: rgb(205, 210, 255);
+}
+
+
+.css-1s2u09g-control{
+  border-color: rgb(0, 0, 88) !important;
+  border-radius: 5px !important;
+}
+.css-1okebmr-indicatorSeparator{
+  background-color: white !important;
+}
+.css-tj5bde-Svg{
+  fill: rgb(0, 0, 88) !important;
 }

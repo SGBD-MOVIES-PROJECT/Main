@@ -20,7 +20,9 @@ const slideImages = [
 function DemoCarousel() {
 
     return (
+    
       <div className="slide-container">
+        <h2 className='popularnow'>MOST POPULAR NOW</h2>
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div className="each-slide" key={index}>
