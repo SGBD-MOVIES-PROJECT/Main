@@ -6,10 +6,10 @@ import Home from './pages/Home';
 import Support from './pages/Support';
 import Top10 from './pages/Top10';
 import Filter from './pages/Filter';
-import Footer from "./components/Footer";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import LoginPage from "./pages/LoginPage";
+import { FooterContainer } from './React Footer/Footer'
 
 
 
@@ -30,14 +30,10 @@ function App() {
           <Route path='/help' component={Support} />
           <Route path='/top10' component={Top10} />
           <Route path='/filter' component={Filter} />
+          <Route path='/login' component={LoginPage} />
         </Switch>
       </Router>
-      <div className="Login">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      }
-    </div>
-      <Footer />
+      <FooterContainer />
     </>
   );
 }

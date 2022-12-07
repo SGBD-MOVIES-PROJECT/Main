@@ -1,0 +1,15 @@
+table{
+    margin: 3rem;
+}
+table, th, td{
+    border-width: 1px;
+    border-color: rgb(73, 93, 153);
+    border-style: solid;
+    border-collapse: collapse;
+}
+th{
+    width: calc(100% / 90);
+}
+th, td{
+    padding: 10px;
+}

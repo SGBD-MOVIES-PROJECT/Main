@@ -58,7 +58,6 @@ function Navbar() {
           </nav>
           <div className='button-div'>
                 <button type = 'submit' className='sign-in' onClick={Login}>LOG IN</button> 
-                {/* <Route path='/login' component={LoginPage} /> */}
           </div>
         </div>
 
