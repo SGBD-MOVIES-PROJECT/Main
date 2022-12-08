@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
 #from applications.pelicula.views import IndexView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("applications.pelicula.urls")),
-    path('api-auth/', include('rest_framework.urls')),
+    path("", include("applications.users.urls")),
 ]
