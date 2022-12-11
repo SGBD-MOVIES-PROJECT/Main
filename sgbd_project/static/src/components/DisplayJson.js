@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './DisplayJson.css';
 
-export function DisplayJson({theadData, tbodyData}) {
+export default function DisplayJson({theadData, tbodyData}) {
 	return (
 	    <table>
 			<thead>
