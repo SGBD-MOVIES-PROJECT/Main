@@ -12,7 +12,7 @@ from rest_framework_simplejwt.views import (
 from . import views
 
 app_name = "users_app"
-
+    
 urlpatterns = [
     
     #apiURLs
