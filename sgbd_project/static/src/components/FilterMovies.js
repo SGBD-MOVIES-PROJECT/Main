@@ -7,7 +7,7 @@ import DisplayJson from './DisplayJson';
 const year = (new Date()).getFullYear();
 const years = (Array.from(new Array(124),( val, index) => year - index));
 
-var url2 = 'http://127.0.0.1:8000/api/pelicula/filter/?min_date=19930101&max_date=19940101';
+var url = 'http://127.0.0.1:8000/api/pelicula/filter/?';
 const languages = [
     { value: '', label: 'Any language' },
     { value: 'en', label: 'English' },
@@ -20,16 +20,17 @@ const languages = [
   ];
 const genres = [
     { value: '', label: 'Any genre' },
-    { value: 'Drama', label: 'Drama' },
-    { value: 'Comedy', label: 'Comedy' },
-    { value: 'Action', label: 'Action' },
-    { value: 'Crime', label: 'Crime' },
-    { value: 'Adventure', label: 'Adventure' },
-    { value: 'Fantasy', label: 'Fantasy' },
-    { value: 'Romance', label: 'Romance' },
-    { value: 'Thriller', label: 'Thriller' },
-    { value: 'Documentary', label: 'Documentary' },
-    { value: 'Horror', label: 'Horror' },
+    { value: 'drama', label: 'Drama' },
+    { value: 'comedy', label: 'Comedy' },
+    { value: 'action', label: 'Action' },
+    { value: 'crime', label: 'Crime' },
+    { value: 'adventure', label: 'Adventure' },
+    { value: 'fantasy', label: 'Fantasy' },
+    { value: 'romance', label: 'Romance' },
+    { value: 'thriller', label: 'Thriller' },
+    { value: 'documentary', label: 'Documentary' },
+    { value: 'horror', label: 'Horror' },
+    { value: 'animation', label: 'Animation' },
 ];
 export const FilterMovies = () => {
     years.reverse();
@@ -42,19 +43,52 @@ export const FilterMovies = () => {
     const [showPosts, setshowPosts] = useState();
 
     let displayData
+    
     function pullJson(){
-        fetch(url2)
+        console.log("before fetch");
+        console.log("hola");
+        console.log(url);
+        fetch(url)
         .then(response => response.json() )
         .then(responseData => {
-            displayData = responseData.map(function(todo) {
+            displayData = function(){
+                let tbodyData=responseData; 
+          
+            
+            console.log(tbodyData);
             return(
-                <p key={todo.original_title}>(todo.original_title) </p>
-             )    
-             })
-            console.log(responseData)
+                <table>
+                    <thead>
+                        <tr>
+                            <td>original_title</td>
+                            <td>original_language</td>
+                            <td>release_date</td>
+                            <td>genre</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {   tbodyData.map(jugadorResultado => (
+                 <tr>
+                    <th>{jugadorResultado.original_title}</th>
+                    <th>{jugadorResultado.original_language}</th>
+                    <th>{jugadorResultado.release_date}</th>
+                    <th>{jugadorResultado.genre}</th>
+
+                  </tr>
+                )
+                )}
+                
+                    </tbody>
+                </table>
+                 )
+            }
+            
             setshowPosts(displayData)
         })
     }
+
+
     const [title, setTitle] = useState('');
     const [budgetMin, setBudgetMin] = useState('');
     const [budgetMax, setBudgetMax] = useState('');
@@ -79,9 +113,9 @@ export const FilterMovies = () => {
         var d = document.getElementById("toyear");
         var value1 = d.value;
         console.log('toyear: ', value);
-        var url = 'http://127.0.0.1:8000/api/pelicula/filter/?';
+        url = 'http://127.0.0.1:8000/api/pelicula/filter/?';
             if(title!==""){
-                url = url + 'title=' + title + '&';
+                url = url + 'original_title=' + title + '&';
             }
             if(budgetMin!==""){
                 url = url + 'budgetMin=' + budgetMin + '&';
@@ -99,7 +133,7 @@ export const FilterMovies = () => {
                 url = url + 'genre=' + genre + '&';
             }
             if(language.length!==0){
-                url = url + 'language=' + language + '&';
+                url = url + 'original_language=' + language + '&';
             }
             if(value!=="Any Year"){
                 url = url + 'min_date=' + value + '0101'+ '&';

@@ -136,9 +136,6 @@ label {
   border-style: solid;
   border-collapse: collapse;
 } */
-::-webkit-scrollbar {
-  display: none;
-}
 
 .LoginPage {
   background-color: rgb(224, 232, 255);
