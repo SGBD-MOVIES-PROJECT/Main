@@ -25,6 +25,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
 
 from django.http import HttpResponse
@@ -59,11 +60,18 @@ class LogoutView(APIView):
         return Response({"status": "OK, goodbye"})
 
 class UserListApiView(ListAPIView):
-
     serializer_class = UserSerializer
 
     def get_queryset(self):
         return User.objects.all()      
+    
+class UserProfile(ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (JWTAuthentication,)
+    serializer_class = UserSerializer
+    def get_queryset(self):
+        return User.objects.filter(id = self.request.user.id).values()
+   
 
 class UserDetailView(RetrieveAPIView):
     serializer_class = UserSerializer

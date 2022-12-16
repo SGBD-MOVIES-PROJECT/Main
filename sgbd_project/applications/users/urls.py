@@ -64,5 +64,9 @@ urlpatterns = [
         views.ReviewView.as_view(), 
         name='post'
     ),
+     path('api/perfil/', 
+        views.UserProfile.as_view(), 
+        name='post'
+    ),
     
 ]
