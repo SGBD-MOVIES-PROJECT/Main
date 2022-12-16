@@ -9,6 +9,8 @@ import Filter from './pages/Filter';
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import LoginPage from "./pages/LoginPage";
+import CreateReview from "./pages/CreateReview";
+
 import { FooterContainer } from './React Footer/Footer'
 
 
@@ -29,8 +31,9 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/help' component={Support} />
           <Route path='/top10' component={Top10} />
-          <Route path='/filter' component={Filter} />
+          {/* <Route path='/filter' component={Filter} /> */}
           <Route path='/login' component={LoginPage} />
+          <Route path='/createreview' component={CreateReview} />
         </Switch>
       </Router>
       <FooterContainer />

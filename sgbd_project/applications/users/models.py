@@ -1,24 +1,21 @@
 from django.db import models
-
+from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 #
 from .managers import UserManager
 
+from django.db import models
+
+from django.utils.text import slugify
+
+
+
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    GENDER_CHOICES = (
-        ('M', 'Masculino'),
-        ('F', 'Femenino'),
-        ('O', 'Otros'),
-    )
-
     username = models.CharField(max_length=10, unique=True)
+    fullName = models.CharField(max_length=30, blank=True)
     email = models.EmailField()
-    nombres = models.CharField(max_length=30, blank=True)
-    apellidos = models.CharField(max_length=30, blank=True)
-    genero = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
-    codregistro = models.CharField(max_length=6, blank=True)
     #
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -27,10 +24,41 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     REQUIRED_FIELDS = ['email',]
 
+
     objects = UserManager()
 
-    def get_short_name(self):
-        return self.username
+   
+  
+
+class Review(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    titleReview = models.CharField(max_length=30)
+    review = models.CharField(max_length=300)
+    STARS = (
+    (0, '0 Stars'),
+    (1, '1 Stars'),
+    (2, '2 Stars'),
+    (3, '3 Stars'),
+    (4, '4 Stars'),
+    (5, '5 Stars'),
+  )
+    nota = models.IntegerField(default=0, choices=STARS)
+   
+    created = models.DateTimeField(auto_now_add=True)
     
-    def get_full_name(self):
-        return self.nombres + ' ' + self.apellidos
+    class Meta:
+        ordering = ('user',)
+
+
+    def __str__(self):
+        """Return title and username."""
+        return '{} by @{}'.format(self.titleReview, self.user.username)
+
+
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.titleReview)
+        super(Review, self).save(*args, **kwargs)
+
+
+

@@ -43,7 +43,13 @@ export const FilterMovies = () => {
     const [showPosts, setshowPosts] = useState();
 
     let displayData
-    
+
+    function url2(p){
+        let url = "./createreview/";
+        url += "?movie=" + p ;
+        return url;
+    }
+
     function pullJson(){
         console.log("before fetch");
         console.log("hola");
@@ -60,25 +66,23 @@ export const FilterMovies = () => {
                 <table>
                     <thead>
                         <tr>
-                            <td>original_title</td>
-                            <td>original_language</td>
-                            <td>release_date</td>
-                            <td>genre</td>
-
+                            {/* <td>Id</td> */}
+                            <td>Original title</td>
+                            <td>Original language</td>
+                            <td>Release date</td>
+                            <td>Budget</td>
                         </tr>
                     </thead>
                     <tbody>
-                    {   tbodyData.map(jugadorResultado => (
-                 <tr>
-                    <th>{jugadorResultado.original_title}</th>
-                    <th>{jugadorResultado.original_language}</th>
-                    <th>{jugadorResultado.release_date}</th>
-                    <th>{jugadorResultado.genre}</th>
-
-                  </tr>
-                )
-                )}
-                
+                        {   tbodyData.map(todo => (
+                        <tr>
+                            {/* <th>{todo.id}</th> */}
+                            <th> <a href={url2(todo.original_title)}>{todo.original_title}</a></th>
+                            <th>{todo.original_language}</th>
+                            <th>{todo.release_date}</th>
+                            <th>{todo.budget}</th>
+                        </tr>
+                        ))}
                     </tbody>
                 </table>
                  )

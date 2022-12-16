@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate
 from .serializer import MyTokenObtainPairSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth.decorators import login_required
+
 
 from rest_framework.generics import(
     ListAPIView,
@@ -14,14 +16,18 @@ from rest_framework.generics import(
 
 #
 from .models import User
+from .models import Review
 #
 from .serializer import UserSerializer
+from .serializer import ReviewSerializer
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
+
+from django.http import HttpResponse
 
 
 
@@ -74,6 +80,12 @@ class UserUpdateView(UpdateAPIView):
 class UserRetrieveView(RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+class ReviewView(CreateAPIView):
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()
+    
+
 
     
     

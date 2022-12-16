@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     #local apps 
     'applications.pelicula',
     'applications.users',
+
+
     
     #third party apps
     'django_elasticsearch_dsl',

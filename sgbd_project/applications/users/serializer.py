@@ -2,9 +2,12 @@ from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import User
+
+from .models import *
+
+from django.db import models
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -20,33 +23,27 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'username',
+            'fullName',
+            'email',
             'password', 
             'password2',
-            'email',
-            'nombres',
-            'apellidos',
-            'genero',
         )
         extra_kwargs = {
-            'nombres': {'required': True},
-            'apellidos': {'required': True}
+            'username': {'required': True},
+            'fullName': {'required': True},
+            'password': {'required': True},
+            'password2': {'required': True},
         }
 
-    def validate(self, attrs):
-        if attrs['password'] != attrs['password2']:
-            raise serializers.ValidationError({"password": "Password fields didn't match."})
-
-        return attrs
+    
     
     def create(self, validated_data):
         user = User.objects.create(
             username=validated_data['username'],
+            fullName=validated_data['fullName'],
             email=validated_data['email'],
-            nombres=validated_data['nombres'],
-            apellidos=validated_data['apellidos'],
-            genero = validated_data['genero'],
         )
-
+       
         user.set_password(validated_data['password'])
         user.save()
 
@@ -62,6 +59,27 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         return token
 
+class ReviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Review
+        fields = (
+            'user',
+            'titleReview',
+            'review',
+            'nota',
+        )
+    def save_review(request):
+       
+        review = {
+            'user': request.user.id,
+            'titleReview': request.POST['itleReview'],
+            'review': request.POST['post'],
+            'nota': request.POST['nota']
+        }
+       
+        return review
 
 
         

@@ -20,7 +20,9 @@
   width: 100%;
   padding-left: calc(4px + 0.5rem);
 }
-
+th a {
+  display: block;
+}
 .title{
   margin-top: 10px;
   border-radius: 5px;
@@ -28,6 +30,7 @@
   width: calc(100% - 27px );
   border-width: 0.5px;
   min-height: 36px;
+  padding-left: 5px;
 }
 
 .year-container, .duration-container, .budget-container{
