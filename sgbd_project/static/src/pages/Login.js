@@ -24,19 +24,19 @@ export const Login = (props) => {
             url:baseUrl,
             data: bodyFormData,
             headers: { "Content-Type": "application/json" },
-            
-          }) 
+
+          })
           setSuccess(true);
-          alert(JSON.stringify(response?.data)); 
+          alert(JSON.stringify(response?.data));
           const accessToken = response?.data?.access_token;
           setAuth({ username, password, accessToken });
           setUsername('');
           setPassword('');
-          
-        
 
-        
-       
+
+
+
+
     }
 
     return (
