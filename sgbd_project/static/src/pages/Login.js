@@ -1,12 +1,46 @@
 import React, { useState } from "react";
+import axios from "axios";
+import md5 from 'md5';
+
+const baseUrl="http://127.0.0.1:8000/api/login/";
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    var bodyFormData = new FormData();
+    bodyFormData.append('username', 'prova');
+    bodyFormData.append('password', '123456Q$');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
+    const handleSubmit = async (e) => {
+        await axios({
+            method: "post",
+            url:baseUrl,
+            data: bodyFormData,
+            headers: { "Content-Type": "application/json" },
+          })
+        .then(response=>{
+            return response.data;
+        })
+        .then(response=>{
+            if(response.length>0){
+                var respuesta=response[0];
+                alert(respuesta.id);
+                //cookies.set('apellido_paterno', respuesta.apellido_paterno, {path: "/"});
+               // cookies.set('apellido_materno', respuesta.apellido_materno, {path: "/"});
+               // cookies.set('nombre', respuesta.nombre, {path: "/"});
+               // cookies.set('username', respuesta.username, {path: "/"});
+              //  alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido_paterno}`);
+               // window.location.href="./menu";
+               console.log(response);
+               console.log("holaaaaaaa");
+            }else{
+                alert('El usuario o la contraseña no son correctos');
+            }
+        })
+        .catch(error=>{
+            alert(error);
+         
+        })
     }
 
     return (

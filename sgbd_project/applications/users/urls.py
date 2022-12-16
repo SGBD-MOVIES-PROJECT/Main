@@ -60,5 +60,9 @@ urlpatterns = [
         views.LogoutView.as_view(), 
         name='auth_logout'
     ),
+     path('api/review/', 
+        views.ReviewView.as_view(), 
+        name='post'
+    ),
     
 ]

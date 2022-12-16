@@ -14,6 +14,7 @@ urlpatterns = [
     path("api/pelicula/filter/", PeliculaSearchAPIView.as_view()),
     path("api/pelicula/info", InfoAPIList.as_view()),
     path("", PeliculaListView.as_view(), name = 'home'),
+  
 
   
 ]

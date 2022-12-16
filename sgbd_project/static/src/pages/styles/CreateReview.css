@@ -1,0 +1,45 @@
+.full-cont{
+    min-height: 100vh;
+    background-color: rgb(224, 232, 255);
+    padding: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.full-cont h1{
+    padding: 1rem;
+}
+.movie-title {
+    font-size: large;
+    font-weight: 200;
+    padding: 15px;
+}
+
+.review-title{
+    padding-top: 15px;
+    font-size: larger;
+    font-weight: bold;
+}
+.comment, .rating, .title-searchbar{
+    margin-top: 10px;
+    border-radius: 5px;
+    border-color: rgb(0, 0, 88);
+    width: 100%;
+    align-items: center;    
+    border-width: 0.5px;
+}
+
+.comment{
+    min-height: 12vh;
+    padding: 5px;
+}
+
+.title-searchbar{
+    min-height: 38px;
+    padding: 5px;
+}
+
+.rating-container, .comment-container, .title-searchbar-container{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
