@@ -10,7 +10,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import LoginPage from "./pages/LoginPage";
 import CreateReview from "./pages/CreateReview";
-
+import Profile from "./pages/Profile";
 import { FooterContainer } from './React Footer/Footer'
 
 
@@ -34,6 +34,7 @@ function App() {
           {/* <Route path='/filter' component={Filter} /> */}
           <Route path='/login' component={LoginPage} />
           <Route path='/createreview' component={CreateReview} />
+          <Route path='/profile' component={Profile} />
         </Switch>
       </Router>
       <FooterContainer />
