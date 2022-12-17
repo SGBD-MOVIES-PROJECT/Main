@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import { FilterMovies } from '../components/FilterMovies';
 import { DemoCarousel } from '../components/DemoCarousel';
-import DisplayJson  from '../components/DisplayJson';
 import data from "../data.json"
 
 function Home() {

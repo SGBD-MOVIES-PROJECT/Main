@@ -4,7 +4,6 @@ import Select from 'react-select';
 import { Avatar, Box, Typography } from '@mui/material';
 import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { grey } from '@mui/material/colors';
-import DisplayJson from './DisplayJson';
 import { Table } from 'react-bootstrap';
 import TableUrl from './TableUrl';
 
@@ -23,6 +22,7 @@ const languages = [
     { value: 'sv', label: 'Swedish' },
     { value: 'zh', label: 'Chinese' },
     { value: 'de', label: 'German' },
+    { value: 'nl', label: 'Dutch' },
   ];
 const genres = [
     { value: '', label: 'Any genre' },
@@ -51,6 +51,23 @@ export const FilterMovies = () => {
         let url = "./createreview/";
         url += "?movie=" + p ;
         return url;
+    }
+    
+    function languageJSON(p){
+         //return languages.find(option => option.value === p);
+        if(p === 'en') return 'English';
+        else if(p === 'fr') return 'French';
+        else if(p === 'es') return 'Spanish';
+        else if(p === 'it') return 'Italian';
+        else if(p === 'sv') return 'Swedish';
+        else if(p === 'zh') return 'Chinese';
+        else if(p === 'de') return 'German';
+        else if(p === 'nl') return 'Dutch';
+        else return 'Unknown';
+    }
+    function budgetJSON(p){
+        if (p===0) return "---";
+        else return p + "$";
     }
     const columns = [
         { key: '1', title: 'ID' , dataIndex: 'id'},
@@ -114,10 +131,10 @@ export const FilterMovies = () => {
                 <thead>
                     <tr>
                         {/* <td>Id</td> */}
-                        <td>Original title</td>
-                        <td>Original language</td>
-                        <td>Release date</td>
-                        <td>Budget</td>
+                        <td><a>Original title</a></td>
+                        <td><a>Original language</a></td>
+                        <td><a>Release date</a></td>
+                        <td><a>Budget</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -125,9 +142,9 @@ export const FilterMovies = () => {
                     <tr>
                         {/* <th>{todo.id}</th> */}
                         <th> <a href={url2(todo.original_title)}>{todo.original_title}</a></th>
-                        <th>{todo.original_language}</th>
-                        <th>{todo.release_date}</th>
-                        <th>{todo.budget}</th>
+                        <th><p>{languageJSON(todo.original_language)}</p></th>
+                        <th><p>{(todo.release_date).substring(0, todo.release_date.length - 14)}</p></th>
+                        <th><p>{budgetJSON(todo.budget)}</p></th>
                     </tr>
                     ))}
                 </tbody>
@@ -204,9 +221,7 @@ export const FilterMovies = () => {
 
             return (
                 <div className='full-container'>
-                    <h1> Movie Search Filters</h1>
-                    <h1> ___________________________________________________________________________________________________________________</h1>
-                    
+                    <h1 id="titol-filters"> Movie Search Filters</h1>                    
                     <div className='filterMovies'>
                         <div className='searchbar-container'>  
                             <p className='filters-title' id='title'>Title: </p>
@@ -272,7 +287,6 @@ export const FilterMovies = () => {
                     </div>
                     <div className = 'submit-button-div'>
                         <button onClick={handleClick} className='submit-button' type = 'submit'>SUBMIT</button>
-                        <h1> ___________________________________________________________________________________________________________________</h1>
                         {/* <TableUrl/>  */}
                     </div>
                     
