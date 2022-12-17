@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import './styles/CreateReview.css';
-import Star from "../components/Star"
 import { useHistory } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
-
+const labels = {
+    1: '1',
+    2: '2',
+    3: '3',
+    4: '4',
+    5: '5',
+    6: '6',
+    7: '7',
+    8: '8',
+    9: '9',
+    10: '10',
+  };
 export default function CreateReview() {
+    const [value, setValue] = useState(0);
     const movie = (new URLSearchParams(window.location.search)).get('movie');
 
     const [comment, setComment] = useState('');
@@ -14,7 +27,7 @@ export default function CreateReview() {
     const history = useHistory();
 
     const HomePage = () => {
-        console.log('rating: ', rating);
+        console.log('rating: ', value);
         console.log('comment: ', comment);
         console.log('movie: ', movie);
 
@@ -49,7 +62,19 @@ export default function CreateReview() {
                 </div>
                 <div className='rating-container'>
                     <p className='review-title'>Rating: </p>
-                    <Star/>
+                    <Box
+                        sx={{
+                        '& > legend': { mt: 2 },
+                        }}
+                        >
+                        <Rating
+                            name="text-feedback"
+                            value={value}
+                            defaultValue={null} max={10} 
+                            onChange={event => setValue(event.target.value)}
+                        />
+                        <Box sx={{ ml: 2 }}>Rating: {labels[value]}</Box>
+                    </Box>
                 </div>
                 <div className='comment-container'>  
                     <p className='review-title' id='comment'>What are your thoughts about the movie? </p>
