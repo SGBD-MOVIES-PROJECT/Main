@@ -8,7 +8,7 @@ from django.db import models
 
 from django.utils.text import slugify
 
-
+from applications.pelicula.models import Movie
 
 
 class User(AbstractBaseUser, PermissionsMixin):
