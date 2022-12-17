@@ -159,7 +159,9 @@ class PeliculaSearchAPIView(ListAPIView):
         queryset=[]
         for response in responses:
             for hit in response:
+                
                 movieJson={}
+                movieJson['id']=hit.id
                 movieJson['budget']=hit.budget
                 movieJson['genre']=hit.genre
                 movieJson['original_language']=hit.original_language

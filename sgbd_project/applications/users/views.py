@@ -89,11 +89,14 @@ class UserRetrieveView(RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-class ReviewView(CreateAPIView):
+class ReviewView(ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (JWTAuthentication,)
     serializer_class = ReviewSerializer
-    queryset = Review.objects.all()
+    def get_queryset(self):
+        aux = User.objects.get(id = self.request.user.id)
+        return Review.objects.filter(user = aux)
     
-
 
     
     

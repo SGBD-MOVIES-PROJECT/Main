@@ -69,7 +69,7 @@ urlpatterns = [
         name='post'
     ),
       path('api/showReviews/',
-        views.UserProfile.as_view(),
+        views.ReviewView.as_view(),
         name='get'
     ),
 
