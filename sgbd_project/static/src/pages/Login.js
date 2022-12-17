@@ -3,6 +3,8 @@ import axios from "axios";
 import md5 from 'md5';
 import { json } from "react-router";
 import AuthContext from "../context/AuthProvider";
+import Token from "../api/tokenService";
+import tokenService from '../api/tokenService';
 
 const baseUrl="http://127.0.0.1:8000/api/login/";
 
@@ -11,7 +13,9 @@ export const Login = (props) => {
     const [success, setSuccess] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    //const [t, setT] = useState(''); per get del token
     const { setAuth } = useContext(AuthContext);
+
 
     var bodyFormData = new FormData();
     bodyFormData.append('username', 'prova');
@@ -27,26 +31,29 @@ export const Login = (props) => {
 
           })
           setSuccess(true);
-          alert(JSON.stringify(response?.data));
-          const accessToken = response?.data?.access_token;
-          setAuth({ username, password, accessToken });
-          setUsername('');
-          setPassword('');
-
+          const Token = response?.data.access;
+         //setT(tokenService.getLocalAccessToken());
+          tokenService.updateLocalAccessToken(Token);
+          
+          
 
 
 
 
     }
 
+
+   
+
     return (
+
         success ? (
             <section>
                 <h1>You are logged in!</h1>
-                <h2>Username: {AuthContext.useAuth}</h2>
+              <h2></h2>
                 <br />
                 <p>
-                    <a href="#">Go to Home</a>
+                    <a href="/profile">Go to My Profile</a>
                 </p>
             </section>
         ) : (

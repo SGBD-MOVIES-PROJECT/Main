@@ -1,46 +1,51 @@
-import { useState, useEffect } from "react";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { Redirect, useLocation } from "react-router-dom";
-import { redirect } from "react-router";
+import React, { useEffect } from "react";
+import { useState, useContext } from "react";
+import axios from "axios";
+import tokenService from "../api/tokenService"; 
+ const baseUrl="http://127.0.0.1:8000/api/";
 
-const Users = () => {
-    const [users, setUsers] = useState();
-    const axiosPrivate = useAxiosPrivate();
-    const navigate = redirect();
-    const location = useLocation();
-
-    useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
-
-        const getUsers = async () => {
-                const response = await axiosPrivate.get('/users', {
-                    signal: controller.signal
-                });
-                console.log(response.data);
-                isMounted && setUsers(response.data);
-            
-        }
+export const Profile = () => {
+var bodyFormData = new FormData();
+const [username, setUsername] = useState('');
+const [email, setEmail] = useState('');
+const [Name, setName] = useState(''); //per get del token
 
 
 
-        getUsers();
+function Profile() {
 
+    axios.get(baseUrl+"perfil/" ,{
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": 'Bearer ' + tokenService.getLocalAccessToken().replace(/['"]+/g, '')
+        }, data: bodyFormData
+
+    }).then(response => {
+        setUsername(JSON.stringify(response.data[0].username).replace(/['"]+/g, ''));
+        setEmail(JSON.stringify(response.data[0].email).replace(/['"]+/g, ''));
+        setName(JSON.stringify(response.data[0].fullName).replace(/['"]+/g, ''));
         
-    }, [])
+        
+     }
+    )
 
-    return (
-        <article>
-            <h2>Users List</h2>
-            {users?.length
-                ? (
-                    <ul>
-                        {users.map((user, i) => <li key={i}>{user?.username}</li>)}
-                    </ul>
-                ) : <p>No users to display</p>
-            }
-        </article>
+}
+    
+    useEffect(() => {},
+    Profile(),
+    []);
+    
+
+     return (
+      <div>
+     
+        <h2>Username: {username}</h2>
+        <h2>Email: {email}</h2>
+        <h2>Name: {Name}</h2>]
+        
+        
+      </div>
     );
-};
-
-export default Users;
+  }
+  
+  export default Profile;
