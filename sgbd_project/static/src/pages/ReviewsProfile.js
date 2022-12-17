@@ -12,7 +12,6 @@ export default function UserProfile() {
     
     function pullJson(){
         console.log("before fetch");
-        console.log("hola");
         console.log(url);
         fetch(url)
         .then(response => response.json() )
@@ -71,7 +70,7 @@ export default function UserProfile() {
              
      }
     return (
-            <div className='full-cont'>
+            <div className='full-cont2'>
                 <h1>My Reviews</h1>
                 <div className = 'submit-button-div'>
                     <button onClick={handleClick} className='submit-button' type = 'submit'>SHOW REVIEWS</button>

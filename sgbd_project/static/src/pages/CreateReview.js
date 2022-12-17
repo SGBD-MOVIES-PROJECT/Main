@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './styles/CreateReview.css';
 import Star from "../components/Star"
+import { useHistory } from "react-router-dom";
 
 
 export default function CreateReview() {
@@ -10,15 +11,19 @@ export default function CreateReview() {
     const [rating, setRating] = useState("");
     let url = 'https://www.example.com/api/create-item';
 
+    const history = useHistory();
 
-    const handleClick = event => {
+    const HomePage = () => {
         console.log('rating: ', rating);
         console.log('comment: ', comment);
         console.log('movie: ', movie);
 
         //postRequest();
-    };
-    
+
+        history.push("/")
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }   
+
     function postRequest(){
         fetch(url, {
             method: 'POST',
@@ -52,7 +57,7 @@ export default function CreateReview() {
                     value={comment}/>
                 </div>
                 <div className = 'submit-button-div'>
-                    <button onClick={handleClick} className='submit-button' type = 'submit'>SUBMIT</button>
+                    <button onClick={HomePage} className='submit-button' type = 'submit'>SUBMIT</button>
                 </div>
             </div> 
             

@@ -5,15 +5,12 @@ import 'react-slideshow-image/dist/styles.css';
 const slideImages = [
   {
     url: 'TheAvengers.jpg',
-    caption: 'Slide 1'
   },
   {
     url: 'Joker.jpg',
-    caption: 'Slide 2'
   },
   {
     url: 'DrStrange.jpg',
-    caption: 'Slide 3'
   },
 ];
 
