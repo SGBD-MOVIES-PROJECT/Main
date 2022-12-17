@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 80px 60px;
+  padding-bottom: 10px;
   align-items: center;
   background: #050f47;
   @media (max-width: 1000px) {

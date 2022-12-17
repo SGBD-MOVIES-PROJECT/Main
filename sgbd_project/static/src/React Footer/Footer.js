@@ -25,7 +25,7 @@ export function FooterContainer() {
 
             </Footer.Wrapper>
             <div className='footerdiv'>
-                <h1 className='h1'>-- Copyrights to CineTube --</h1>
+                <h1>-- Copyrights to CineTube --</h1>
             </div>
         </Footer>
     )
