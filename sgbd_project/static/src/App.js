@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage";
 import CreateReview from "./pages/CreateReview";
 import Profile from "./pages/Profile";
 import { FooterContainer } from './React Footer/Footer'
+import UserProfile from './components/UserProfile'
 
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/login' component={LoginPage} />
           <Route path='/createreview' component={CreateReview} />
           <Route path='/profile' component={Profile} />
+          <Route path='/myprofile' component={UserProfile} />
         </Switch>
       </Router>
       <FooterContainer />

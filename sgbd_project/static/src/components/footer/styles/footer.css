@@ -2,3 +2,14 @@
     padding-right: 0.5rem;
     font-size: 1.5rem;
 }
+.footerdiv{
+    background-color: rgb(10, 5, 97);
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+.h1{
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-style: italic;
+}

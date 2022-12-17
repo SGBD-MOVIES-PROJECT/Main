@@ -17,8 +17,8 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Popular',
-    path: '/popular',
+    title: 'Profile',
+    path: '/profile',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
@@ -29,9 +29,9 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Profile',
-    path: '/profile',
-    icon: <IoIcons.IoMdPeople />,
+    title: 'MyProfile',
+    path: '/myprofile',
+    icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   },
 ];

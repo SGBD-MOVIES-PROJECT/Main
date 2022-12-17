@@ -1,32 +1,15 @@
 import React, { useState } from "react";
 import './styles/CreateReview.css';
-import Select from 'react-select';
-
+import Star from "../components/Star"
 
 
 export default function CreateReview() {
     const movie = (new URLSearchParams(window.location.search)).get('movie');
-    const ratings = [
-        { value: '---', label: '---' },
-        { value: '10', label: '10' },
-        { value: '9', label: '9' },
-        { value: '8', label: '8' },
-        { value: '7', label: '7' },
-        { value: '6', label: '6' },
-        { value: '5', label: '5' },
-        { value: '4', label: '4' },
-        { value: '3', label: '3' },
-        { value: '2', label: '2' },
-        { value: '1', label: '1' },
-        { value: '0', label: '0'}
-      ]
+
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState("");
     let url = 'https://www.example.com/api/create-item';
 
-    function setr(){
-        setRating('10');
-    }
 
     const handleClick = event => {
         console.log('rating: ', rating);
@@ -61,9 +44,7 @@ export default function CreateReview() {
                 </div>
                 <div className='rating-container'>
                     <p className='review-title'>Rating: </p>
-                    <Select className='rating' 
-                        options={ratings} defaultValue={ratings[0]} onChange={(choice) => setRating(choice.value)}
-                    />
+                    <Star/>
                 </div>
                 <div className='comment-container'>  
                     <p className='review-title' id='comment'>What are your thoughts about the movie? </p>
@@ -74,6 +55,7 @@ export default function CreateReview() {
                     <button onClick={handleClick} className='submit-button' type = 'submit'>SUBMIT</button>
                 </div>
             </div> 
+            
        
     );
 }

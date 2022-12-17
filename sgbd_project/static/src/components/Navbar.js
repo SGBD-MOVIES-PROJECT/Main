@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
+import { Avatar, Box, Typography } from '@mui/material';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import { MenuItems } from "./MenuItems";
@@ -27,12 +28,15 @@ function Navbar() {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-          
+      
           <div className='navbar'>
               <Link to = ".">
               <button type = 'submit' className='logo'>CineTube</button>
               </Link>
-
+              <h3 className='espacio'> AF </h3>
+              <Typography variant="title" >
+              <img src='http://localhost:3000/logo3.png' width={50} height={60} />
+            </Typography>
               <Link to='#' className='menu-bars'>
                 <FaIcons.FaBars onClick={showSidebar} />
               </Link>

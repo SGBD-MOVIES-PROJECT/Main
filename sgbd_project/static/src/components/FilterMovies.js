@@ -1,7 +1,13 @@
-import React, {useState} from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import './FilterMovies.css';
 import Select from 'react-select';
+import { Avatar, Box, Typography } from '@mui/material';
+import { DataGrid, gridClasses } from '@mui/x-data-grid';
+import { grey } from '@mui/material/colors';
 import DisplayJson from './DisplayJson';
+import { Table } from 'react-bootstrap';
+import TableUrl from './TableUrl';
+
 
 
 const year = (new Date()).getFullYear();
@@ -37,9 +43,6 @@ export const FilterMovies = () => {
     years.length = 125;
     years.splice(125, 1, 'Any Year');
     
-    const getHeadings = (data) => {
-        return Object.keys(data[0]);
-    }
     const [showPosts, setshowPosts] = useState();
 
     let displayData
@@ -49,6 +52,31 @@ export const FilterMovies = () => {
         url += "?movie=" + p ;
         return url;
     }
+    const columns = [
+        { key: '1', title: 'ID' , dataIndex: 'id'},
+        { key: '2', title: 'Title', dataIndex: 'original_title' },
+        { key: '3', title: 'Language', dataIndex: 'original_language' },
+        { key: '4', title: 'Release Date', dataIndex: 'release_date' },
+        { key: '5', title: 'Budget' , dataIndex: 'budget'},
+        { key: '6', title: 'Genres' , dataIndex: 'genres'}
+    ];
+    const [dataSource, setDataSource] = useState([]);
+    const [loading, setloading] = useState(false);
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+    useEffect(() => {
+        setloading(true);
+        url = url.substring(0, url.length - 1);
+        fetch(url)
+        .then(response => response.json() )
+        .then(data => {
+            setDataSource(data);
+        }).catch(err => {
+            console.log(err);
+        }).finally(() => {
+            setloading(false);
+        })
+        }, [])
 
     function pullJson(){
         console.log("before fetch");
@@ -63,35 +91,53 @@ export const FilterMovies = () => {
             
             console.log(tbodyData);
             return(
+                
+                // <div>
+                //   <Table>
+                //     loading: {loading}
+                //     columns: {columns}
+                //     dataSource: {dataSource}
+                //     pagination: {{
+                //         pageSize: pageSize,
+                //         current: page,
+                //         onChange: (page, pageSize) => {
+                //             setPageSize(pageSize);
+                //             setPage(page);
+                //         }
+                //     }}
+                // </Table>  
+                    
+                
+                // </div>
+                
                 <table>
-                    <thead>
-                        <tr>
-                            {/* <td>Id</td> */}
-                            <td>Original title</td>
-                            <td>Original language</td>
-                            <td>Release date</td>
-                            <td>Budget</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {   tbodyData.map(todo => (
-                        <tr>
-                            {/* <th>{todo.id}</th> */}
-                            <th> <a href={url2(todo.original_title)}>{todo.original_title}</a></th>
-                            <th>{todo.original_language}</th>
-                            <th>{todo.release_date}</th>
-                            <th>{todo.budget}</th>
-                        </tr>
-                        ))}
-                    </tbody>
-                </table>
-                 )
-            }
-            
+                <thead>
+                    <tr>
+                        {/* <td>Id</td> */}
+                        <td>Original title</td>
+                        <td>Original language</td>
+                        <td>Release date</td>
+                        <td>Budget</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {   tbodyData.map(todo => (
+                    <tr>
+                        {/* <th>{todo.id}</th> */}
+                        <th> <a href={url2(todo.original_title)}>{todo.original_title}</a></th>
+                        <th>{todo.original_language}</th>
+                        <th>{todo.release_date}</th>
+                        <th>{todo.budget}</th>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
+             )
+        }
             setshowPosts(displayData)
         })
-    }
-
+             
+     }
 
     const [title, setTitle] = useState('');
     const [budgetMin, setBudgetMin] = useState('');
@@ -100,7 +146,10 @@ export const FilterMovies = () => {
     const [durmax, setMaximum] = useState('');
     const [genre, setGenre] = useState("");
     const [language, setLanguage] = useState("");
+
     
+
+
     
     const handleClick = event => {
 
@@ -149,12 +198,14 @@ export const FilterMovies = () => {
             console.log(url);
 
         //http://127.0.0.1:8000/api/pelicula/filter/?min_date=19930101&max_date=19940101
-           pullJson();     
+          
+        pullJson();     
     };
 
             return (
                 <div className='full-container'>
                     <h1> Movie Search Filters</h1>
+                    <h1> ___________________________________________________________________________________________________________________</h1>
                     
                     <div className='filterMovies'>
                         <div className='searchbar-container'>  
@@ -192,10 +243,10 @@ export const FilterMovies = () => {
                                 </div>
                             </div>
                             <div className='duration-container'>
-                                <p className='filters-title'>Minimum duration time in minutes: </p>
+                                <p className='filters-title2'>Minimum duration time in minutes: </p>
                                 <input className='time' type="text" name="min-time" onChange={event => setMinimum(event.target.value)} value={durmin} />
                                 <div className='bottom-duration' >
-                                    <p className='filters-title'>Maximum duration time in minutes: </p>
+                                    <p className='filters-title2'>Maximum duration time in minutes: </p>
                                     <input className='time' id='bottom-duration' type="text" name="max-time" onChange={event => setMaximum(event.target.value)} value={durmax}/>      
                                 </div>
                             </div>
@@ -221,7 +272,10 @@ export const FilterMovies = () => {
                     </div>
                     <div className = 'submit-button-div'>
                         <button onClick={handleClick} className='submit-button' type = 'submit'>SUBMIT</button>
+                        <h1> ___________________________________________________________________________________________________________________</h1>
+                        {/* <TableUrl/>  */}
                     </div>
+                    
                         {/* <ul>
                             {items.map(item => (
                              <li key={item.id}>
@@ -230,6 +284,9 @@ export const FilterMovies = () => {
                             ))}
                         </ul> */}
                         {showPosts}
+                        <div>
+                            
+                </div>
                 </div>
                 
             );

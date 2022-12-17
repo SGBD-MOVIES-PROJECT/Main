@@ -22,9 +22,6 @@ function Home() {
     <>
       <div className='main'>
         <FilterMovies/>
-        <div className='table'>
-          <DisplayJson theadData={getHeadings()} tbodyData={data}/>
-        </div>  
         <div className='carousel'>
           <DemoCarousel /> 
         </div>

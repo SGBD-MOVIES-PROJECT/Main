@@ -68,5 +68,9 @@ urlpatterns = [
         views.UserProfile.as_view(),
         name='post'
     ),
+      path('api/showReviews/',
+        views.UserProfile.as_view(),
+        name='get'
+    ),
 
 ]
