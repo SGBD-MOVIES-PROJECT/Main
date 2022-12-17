@@ -11,6 +11,7 @@ export default function ReviewsProfile() {
     let displayData;
 
     const [showPosts, setshowPosts] = useState();
+
     function Reviews() {
         axios.get(baseUrl+"reviews/" ,{
             headers: {
@@ -47,6 +48,7 @@ export default function ReviewsProfile() {
     useEffect(() => {},
     Reviews(),
     []);
+
 
     return (
         

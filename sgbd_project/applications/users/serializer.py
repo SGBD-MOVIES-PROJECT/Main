@@ -63,21 +63,19 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 class ReviewSerializer(serializers.ModelSerializer):
-
+  
     class Meta:
 
         model = Review
         fields = (
-            'user',
             'titleReview',
             'review',
             'nota',
         )
-    def save_review(request):
-       
+    def save_review(request,self):   
         review = {
-            'user': request.user.id,
-            'titleReview': request.POST['itleReview'],
+            'user':  User.objects.get(id = self.request.user.id),
+            'titleReview': request.POST['titleReview'],
             'review': request.POST['post'],
             'nota': request.POST['nota']
         }
