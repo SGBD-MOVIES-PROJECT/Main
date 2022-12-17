@@ -69,31 +69,19 @@ export const FilterMovies = () => {
         if (p===0) return "---";
         else return p + "$";
     }
-    const columns = [
-        { key: '1', title: 'ID' , dataIndex: 'id'},
-        { key: '2', title: 'Title', dataIndex: 'original_title' },
-        { key: '3', title: 'Language', dataIndex: 'original_language' },
-        { key: '4', title: 'Release Date', dataIndex: 'release_date' },
-        { key: '5', title: 'Budget' , dataIndex: 'budget'},
-        { key: '6', title: 'Genres' , dataIndex: 'genres'}
-    ];
-    const [dataSource, setDataSource] = useState([]);
-    const [loading, setloading] = useState(false);
-    const [page, setPage] = useState(1);
-    const [pageSize, setPageSize] = useState(10);
-    useEffect(() => {
-        setloading(true);
-        url = url.substring(0, url.length - 1);
-        fetch(url)
-        .then(response => response.json() )
-        .then(data => {
-            setDataSource(data);
-        }).catch(err => {
-            console.log(err);
-        }).finally(() => {
-            setloading(false);
-        })
-        }, [])
+    // const columns = [
+    //     { key: '1', title: 'ID' , dataIndex: 'id'},
+    //     { key: '2', title: 'Title', dataIndex: 'original_title' },
+    //     { key: '3', title: 'Language', dataIndex: 'original_language' },
+    //     { key: '4', title: 'Release Date', dataIndex: 'release_date' },
+    //     { key: '5', title: 'Budget' , dataIndex: 'budget'},
+    //     { key: '6', title: 'Genres' , dataIndex: 'genres'}
+    // ];
+    // const [dataSource, setDataSource] = useState([]);
+    // const [loading, setloading] = useState(false);
+    // const [page, setPage] = useState(1);
+    // const [pageSize, setPageSize] = useState(10);
+
 
     function pullJson(){
         console.log("before fetch");
