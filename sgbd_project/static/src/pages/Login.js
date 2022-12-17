@@ -18,8 +18,8 @@ export const Login = (props) => {
 
 
     var bodyFormData = new FormData();
-    bodyFormData.append('username', 'prova');
-    bodyFormData.append('password', '123456Q$');
+    bodyFormData.append('username', username);
+    bodyFormData.append('password', password);
 
      const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ export const Login = (props) => {
               <h2></h2>
                 <br />
                 <p>
-                    <a href="/profile">Go to My Profile</a>
+                    <a href="/myprofile">Go to My Profile</a>
                 </p>
             </section>
         ) : (
