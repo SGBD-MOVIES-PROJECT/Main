@@ -12,12 +12,15 @@
 .main{
     padding: 10px;
 }
+.filters-title2{
+  padding-top: 15px;
+  margin-left: 50px;
+}
 .filters-title{
   padding-top: 15px;
 }
-
 .searchbar-container{
-  width: 100%;
+  width: 800px;
   padding-left: calc(4px + 0.5rem);
 }
 th a {
@@ -64,6 +67,8 @@ th a {
 
 .time{
   border-style: inset;
+  width: 300px;
+  margin-left: 50px;
 }
 .bottom-duration{
     margin-top: 6px;

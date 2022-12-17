@@ -34,11 +34,7 @@ export const Login = (props) => {
           const Token = response?.data.access;
          //setT(tokenService.getLocalAccessToken());
           tokenService.updateLocalAccessToken(Token);
-          
-          
-
-
-
+        
 
     }
 
