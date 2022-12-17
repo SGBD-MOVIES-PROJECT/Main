@@ -41,7 +41,7 @@ function Profile() {
      
         <h2>Username: {username}</h2>
         <h2>Email: {email}</h2>
-        <h2>Name: {Name}</h2>]
+        <h2>Name: {Name}</h2>
         
         
       </div>
