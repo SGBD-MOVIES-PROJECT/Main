@@ -43,15 +43,9 @@ export const Login = (props) => {
 
     return (
 
+        
         success ? (
-            <section>
-                <h1>You are logged in!</h1>
-              <h2></h2>
-                <br />
-                <p>
-                    <a href="/myprofile">Go to My Profile</a>
-                </p>
-            </section>
+            window.location.href = '/myprofile'
         ) : (
 
 
