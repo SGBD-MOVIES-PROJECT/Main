@@ -14,6 +14,10 @@ const UserProfile = () => {
   const [email, setEmail] = useState('');
   const [Name, setName] = useState(''); //per get del token
 
+  const handleClick = event => {
+    //aqui joel xd
+  };
+
 
   function Profile() {
     axios.get(baseUrl+"perfil/" ,{
@@ -57,7 +61,7 @@ const UserProfile = () => {
             <i className="fa fa-facebook" />
           </a>
           <p>
-            <button className="button6">EDIT PROFILE</button>
+            <button onClick={handleClick} className="button6">EDIT PROFILE</button>
           </p>
         </div>
       </div>

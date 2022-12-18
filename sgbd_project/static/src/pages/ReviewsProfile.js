@@ -9,11 +9,10 @@ const baseUrl="http://127.0.0.1:8000/api/";
 export default function ReviewsProfile() {
     var bodyFormData = new FormData();
     let displayData;
-
     const [showPosts, setshowPosts] = useState();
 
     function Reviews() {
-        axios.get(baseUrl+"reviews/" ,{
+        axios.get(baseUrl+"showReviews/" ,{
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": 'Bearer ' + tokenService.getLocalAccessToken().replace(/['"]+/g, '')
@@ -25,12 +24,12 @@ export default function ReviewsProfile() {
             return(
                 <table>
                 <tbody>
-                    {   tbodyData.map(todo => (
+                    {   tbodyData.data.map(todo => (
                     <tr>
                         {/* <th>{todo.id}</th> */}
-                        <th><a>{todo.title}</a></th>
-                        <th><p>{todo.rating}</p></th>
-                        <th><p>{todo.comment}</p></th>
+                        <th><a>{todo.titleReview}</a></th>
+                        <th><p>{todo.nota}</p></th>
+                        <th><p>{todo.review}</p></th>
                     </tr>
                     ))}
                 </tbody>
