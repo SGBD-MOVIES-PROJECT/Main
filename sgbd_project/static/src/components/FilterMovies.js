@@ -6,6 +6,7 @@ import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { grey } from '@mui/material/colors';
 import { Table } from 'react-bootstrap';
 import TableUrl from './TableUrl';
+import Pagination2 from '../pages/Pagination/Pagination2';
 
 
 
@@ -38,6 +39,7 @@ const genres = [
     { value: 'horror', label: 'Horror' },
     { value: 'animation', label: 'Animation' },
 ];
+
 export const FilterMovies = () => {
     years.reverse();
     years.length = 125;
@@ -69,19 +71,6 @@ export const FilterMovies = () => {
         if (p===0) return "---";
         else return p + "$";
     }
-    // const columns = [
-    //     { key: '1', title: 'ID' , dataIndex: 'id'},
-    //     { key: '2', title: 'Title', dataIndex: 'original_title' },
-    //     { key: '3', title: 'Language', dataIndex: 'original_language' },
-    //     { key: '4', title: 'Release Date', dataIndex: 'release_date' },
-    //     { key: '5', title: 'Budget' , dataIndex: 'budget'},
-    //     { key: '6', title: 'Genres' , dataIndex: 'genres'}
-    // ];
-    // const [dataSource, setDataSource] = useState([]);
-    // const [loading, setloading] = useState(false);
-    // const [page, setPage] = useState(1);
-    // const [pageSize, setPageSize] = useState(10);
-
 
     function pullJson(){
         console.log("before fetch");
@@ -96,24 +85,8 @@ export const FilterMovies = () => {
             
             console.log(tbodyData);
             return(
+                       
                 
-                // <div>
-                //   <Table>
-                //     loading: {loading}
-                //     columns: {columns}
-                //     dataSource: {dataSource}
-                //     pagination: {{
-                //         pageSize: pageSize,
-                //         current: page,
-                //         onChange: (page, pageSize) => {
-                //             setPageSize(pageSize);
-                //             setPage(page);
-                //         }
-                //     }}
-                // </Table>  
-                    
-                
-                // </div>
                 
                 <table>
                 <thead>
@@ -286,6 +259,7 @@ export const FilterMovies = () => {
                             ))}
                         </ul> */}
                         {showPosts}
+                        {/* <Pagination2 /> */}
                         <div>
                             
                 </div>
