@@ -17,6 +17,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     fullName = models.CharField(max_length=30, blank=True)
     email = models.EmailField()
     
+    
     #
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -37,9 +38,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Review(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amic = models.ForeignKey(User, on_delete=models.CASCADE, related_name='amic')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+        
     titleReview = models.CharField(max_length=30)
     review = models.CharField(max_length=300)
+
     STARS = (
     (0, '0 Stars'),
     (1, '1 Stars'),
