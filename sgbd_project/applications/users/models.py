@@ -39,7 +39,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Review(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    amic = models.ForeignKey(User, on_delete=models.CASCADE, related_name='amic')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
         

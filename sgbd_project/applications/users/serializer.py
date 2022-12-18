@@ -69,7 +69,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = (
             'movie',
-            'amic',
             'titleReview',
             'review',
             'nota',
@@ -78,7 +77,6 @@ class ReviewSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         review = Review.objects.create(
             movie = validated_data['movie'],
-            amic = validated_data['amic'],
             user = self.context['request'].user,
             titleReview=validated_data['titleReview'],
             review=validated_data['review'],
