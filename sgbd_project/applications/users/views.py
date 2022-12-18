@@ -97,7 +97,11 @@ class ReviewView(ListAPIView):
         aux = User.objects.get(id = self.request.user.id)
         return Review.objects.filter(user = aux)
     
-
+class ReviewCreateView(CreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (JWTAuthentication,)
+    serializer_class =ReviewSerializer
+    queryset = Review.objects.all()
     
     
 

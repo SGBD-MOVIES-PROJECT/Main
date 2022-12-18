@@ -72,5 +72,9 @@ urlpatterns = [
         views.ReviewView.as_view(),
         name='get'
     ),
+       path('api/createReview/',
+        views.ReviewCreateView.as_view(),
+        name='post'
+    ),
 
 ]

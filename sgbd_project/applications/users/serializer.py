@@ -63,7 +63,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 class ReviewSerializer(serializers.ModelSerializer):
-  
+
     class Meta:
 
         model = Review
@@ -72,15 +72,18 @@ class ReviewSerializer(serializers.ModelSerializer):
             'review',
             'nota',
         )
-    def save_review(request,self):   
-        review = {
-            'user':  User.objects.get(id = self.request.user.id),
-            'titleReview': request.POST['titleReview'],
-            'review': request.POST['post'],
-            'nota': request.POST['nota']
-        }
-       
+    def create(self, validated_data):
+        review = Review.objects.create(
+            user = self.context['request'].user,
+            titleReview=validated_data['titleReview'],
+            review=validated_data['review'],
+            nota=validated_data['nota'],
+        )
         return review
+
+
+
+
 
 
         
