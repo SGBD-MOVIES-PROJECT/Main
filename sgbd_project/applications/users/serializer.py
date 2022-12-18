@@ -4,7 +4,7 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import User
-
+from applications.pelicula.models import Movie
 from .models import *
 
 from django.db import models
@@ -68,12 +68,15 @@ class ReviewSerializer(serializers.ModelSerializer):
 
         model = Review
         fields = (
+            'movie',
             'titleReview',
             'review',
             'nota',
+            
         )
     def create(self, validated_data):
         review = Review.objects.create(
+            movie = validated_data['movie'],
             user = self.context['request'].user,
             titleReview=validated_data['titleReview'],
             review=validated_data['review'],
