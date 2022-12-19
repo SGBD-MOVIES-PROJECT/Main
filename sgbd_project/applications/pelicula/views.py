@@ -107,7 +107,9 @@ class PeliculaSearchAPIView(ListAPIView):
         language=self.request.GET.get('original_language')
         min_date=self.request.GET.get('min_date') #yyyymmdd
         max_date=self.request.GET.get('max_date')
-       
+        id_ = self.request.GET.get('id')
+
+
         print(category)
         print(name)
         print(language)
@@ -135,7 +137,8 @@ class PeliculaSearchAPIView(ListAPIView):
         if language is not None:
             s=s.filter("term", original_language=language)
         
-        
+        if id_ is not None:
+            s=s.filter("term", id = id_)
         #query de la cerca
                
         if name is not None:

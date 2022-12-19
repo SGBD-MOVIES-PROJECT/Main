@@ -5,11 +5,30 @@ import './styles/CreateReview.css';
 import tokenService from "../api/tokenService"; 
 
 const baseUrl="http://127.0.0.1:8000/api/";
-
+var originalTitle;
 export default function ReviewsProfile() {
     var bodyFormData = new FormData();
+    var bodyFormData2 = new FormData();
     let displayData;
     const [showPosts, setshowPosts] = useState();
+    const [name, setName] = useState("");
+  
+  
+    function getMovieName(movieID) {
+        originalTitle = "init";
+        let url = "http://127.0.0.1:8000/api/pelicula/filter/?id=";
+        axios.get(url + movieID,{
+            data: bodyFormData2
+        }).then(response => {
+            originalTitle = response.data[0].original_title;
+            console.log(originalTitle);
+            setName(originalTitle);
+        })
+        
+        // return (<h4>
+        //     {originalTitle}
+        // </h4>);
+    }
 
     function Reviews() {
         axios.get(baseUrl+"showReviews/" ,{
@@ -20,20 +39,31 @@ export default function ReviewsProfile() {
         }).then(response => {
             displayData = function(){
             let tbodyData=response; 
-            console.log(tbodyData);
+            //console.log(tbodyData);
             return(
-                <table>
-                <tbody>
+                <div>
                     {   tbodyData.data.map(todo => (
-                    <tr>
-                        {/* <th>{todo.id}</th> */}
-                        <th><a>{todo.titleReview}</a></th>
-                        <th><p>{todo.nota}</p></th>
-                        <th><p>{todo.review}</p></th>
-                    </tr>
+                        
+                    <div>
+                       {getMovieName(todo.movie)}
+                        <div className="review-container">
+                            <div className="r1">
+                                {name}
+                            </div>
+
+                            <div className="r2">
+                                <a>{todo.nota}</a>
+                            </div>
+                            <div className="r3">
+                                <a>{todo.titleReview}</a>
+                                <p>{todo.review}</p> 
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
                     ))}
-                </tbody>
-            </table>
+            </div>
              )
             }
             setshowPosts(displayData);
@@ -44,9 +74,11 @@ export default function ReviewsProfile() {
              
      
 
-    useEffect(() => {},
-    Reviews(),
-    []);
+    useEffect(() => {
+        let ignore = false;
+        if (!ignore)  Reviews()
+        return () => { ignore = true; }
+    },[]);
 
 
     return (

@@ -44,6 +44,26 @@
     margin-left: 5%;
 }
 
-.reviews-cont{
-    
+.review-container{
+    width: 100%;
+    border-style: solid;
+    min-height: 20vh;
+    display: table;
+}
+
+.r1{
+    height: 30%;
+    border-bottom-style: solid;
+}
+.r2{
+    width: 10%;
+    height: calc(20vh - (20vh * 0.3));
+    float: left;
+    text-align: center;
+}
+
+.r3{
+    width: 90%;
+    height: calc(20vh - (20vh * 0.3));
+    float: left;
 }

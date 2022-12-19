@@ -23,6 +23,7 @@ const labels = {
 export default function CreateReview() {
     const [value, setValue] = useState(0);
     const movie = (new URLSearchParams(window.location.search)).get('movie');
+    const movieID = (new URLSearchParams(window.location.search)).get('id');
 
     const [comment, setComment] = useState('');
     let url = 'https://www.example.com/api/create-item';
@@ -33,6 +34,7 @@ export default function CreateReview() {
         console.log('rating: ', value);
         console.log('comment: ', comment);
         console.log('movie: ', movie);
+        console.log('movie id: ', movieID);
 
         //postRequest();
 
