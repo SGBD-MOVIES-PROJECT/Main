@@ -51,7 +51,10 @@ const Contact = () => {
 
   return (
     <StyledContactForm>
-			  <h1>Contact Us</h1>
+      <div className="div1">
+        <h1>Contact Us</h1>
+      <div className="div2">
+        			  
 			  <h3>____________________________</h3>
 	
       <form ref={form} onSubmit={sendEmail}>
@@ -62,6 +65,8 @@ const Contact = () => {
         <label>Message</label>
         <textarea name="message" />
 	  <input onClick={handleClickOpen} type="submit" value="Send" />
+    
+
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -85,7 +90,9 @@ const Contact = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      </form>
+      </form>  
+      </div>
+  </div>
     </StyledContactForm>
 	
   );
@@ -95,15 +102,25 @@ export default Contact;
 
 // Styles
 const StyledContactForm = styled.div`
-  width: 400px;
+  width: 100%;
   height: 60vh;
-  margin: auto;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
   h1 {
 	text-align: center;
 	margin-top: 10px;
 	  }
+    .div1{
+      min-height: 100vh;
+    background-color: rgb(224,232,255);
+    margin-top: 0px;
+    padding-top: 35px;
+    margin-bottom: -30px;
+    }
+    .div2{
+      margin:auto;
+      width:40%;
+    }
 	    h3 {
 	text-align: center;
 				  }
