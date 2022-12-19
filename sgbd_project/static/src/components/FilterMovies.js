@@ -49,9 +49,10 @@ export const FilterMovies = () => {
 
     let displayData
 
-    function url2(p){
+    function url2(p,id){
         let url = "./createreview/";
         url += "?movie=" + p ;
+        url += "&id=" + id ;
         return url;
     }
     
@@ -102,7 +103,7 @@ export const FilterMovies = () => {
                     {   tbodyData.map(todo => (
                     <tr>
                         {/* <th>{todo.id}</th> */}
-                        <th> <a href={url2(todo.original_title)}>{todo.original_title}</a></th>
+                        <th> <a href={url2(todo.original_title, todo.id)}>{todo.original_title}</a></th>
                         <th><p>{languageJSON(todo.original_language)}</p></th>
                         <th><p>{(todo.release_date).substring(0, todo.release_date.length - 14)}</p></th>
                         <th><p>{budgetJSON(todo.budget)}</p></th>

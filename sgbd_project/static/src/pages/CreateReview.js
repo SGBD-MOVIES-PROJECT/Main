@@ -26,9 +26,10 @@ export default function CreateReview() {
     const movieID = (new URLSearchParams(window.location.search)).get('id');
 
     const [comment, setComment] = useState('');
-    let url = 'https://www.example.com/api/create-item';
 
     const history = useHistory();
+    const baseUrl="http://127.0.0.1:8000/api/createReview/";
+
 
     const HomePage = () => {
         console.log('rating: ', value);
@@ -36,46 +37,38 @@ export default function CreateReview() {
         console.log('movie: ', movie);
         console.log('movie id: ', movieID);
 
-        //postRequest();
+        postRequest();
 
         history.push("/")
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     }   
-    //descomentar funcio post i yasta
-    
-    // function postRequest(){
 
-    //     const baseUrl="http://127.0.0.1:8000/api/login/";
-    //     const [success, setSuccess] = useState(false);
-    //     const [username, setUsername] = useState('');
-    //     const [password, setPassword] = useState('');
-    //     //const [t, setT] = useState(''); per get del token
-    //     const { setAuth } = useContext(AuthContext);
+    function postRequest(){
 
-    //     var bodyFormData = new FormData();
-    //     bodyFormData.append('username', username);
-    //     bodyFormData.append('password', password);
-    //     //aixo es del review
-    //     bodyFormData.append('movie', movie);
-    //     bodyFormData.append('rating', value);
-    //     bodyFormData.append('comment', comment);
-        
+        var bodyFormData = new FormData();        
+        bodyFormData.append('movie', "1");
+        bodyFormData.append('titleReview', "Aquest es el titol de la review");
+        // bodyFormData.append('movie', movieID);
+        // bodyFormData.append('nota', value);
+        // bodyFormData.append('review', comment);
 
-    //     const handleSubmit = async (e) => {
-    //         e.preventDefault();
-    //     const response= await axios({
-    //             method: "post",
-    //             url:baseUrl,
-    //             data: bodyFormData,
-    //             headers: { "Content-Type": "application/json" },
 
-    //         })
-    //         setSuccess(true);
-    //         const Token = response?.data.access;
-    //         //setT(tokenService.getLocalAccessToken());
-    //         tokenService.updateLocalAccessToken(Token);
-    //     }
-    // }
+        bodyFormData.append('review', "sdfgsf");
+        bodyFormData.append('nota', "1");
+        console.log(bodyFormData.values());
+        axios({
+            method: "post",
+            url: baseUrl,
+            data: bodyFormData,
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": 'Bearer ' + tokenService.getLocalAccessToken().replace(/['"]+/g, '')
+            },
+            })
+        .then(response=>{
+            return response.data;
+        })    
+    }
     return (
             <div className='full-cont'>
                 <h1>Create Review</h1>

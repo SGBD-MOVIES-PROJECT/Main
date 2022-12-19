@@ -11,7 +11,6 @@ export default function ReviewsProfile() {
     var bodyFormData2 = new FormData();
     let displayData;
     const [showPosts, setshowPosts] = useState();
-    const [name, setName] = useState("");
   
   
     function getMovieName(movieID) {
@@ -22,12 +21,9 @@ export default function ReviewsProfile() {
         }).then(response => {
             originalTitle = response.data[0].original_title;
             console.log(originalTitle);
-            setName(originalTitle);
         })
         
-        // return (<h4>
-        //     {originalTitle}
-        // </h4>);
+        return originalTitle;
     }
 
     function Reviews() {
@@ -45,17 +41,16 @@ export default function ReviewsProfile() {
                     {   tbodyData.data.map(todo => (
                         
                     <div>
-                       {getMovieName(todo.movie)}
                         <div className="review-container">
                             <div className="r1">
-                                {name}
+                                {getMovieName(todo.movie)}
                             </div>
 
                             <div className="r2">
                                 <a>{todo.nota}</a>
                             </div>
                             <div className="r3">
-                                <a>{todo.titleReview}</a>
+                                <h3>{todo.titleReview}</h3>
                                 <p>{todo.review}</p> 
                             </div>
                             
