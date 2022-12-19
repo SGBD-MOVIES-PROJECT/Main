@@ -5,22 +5,25 @@
     margin: auto;
     text-align: center;
     margin-bottom: 10px;
-  }
+    background-color: #4784b9;
+}
   .card-cont{
     width: 100%;
     border-bottom-style: solid;
     padding-bottom: 3rem;
     padding-top: 2 rem;
-    background-color: #4784b9;
   }
   .full-cont{
     background-color: rgb(224, 232, 255);
   }
   .title8 {
-    color: grey;
+    padding-bottom: 10px;
     font-size: 18px;
   }
-  
+  .card p{
+    padding-bottom: 10px;
+
+  }
   .button6 {
     border: none;
     outline: 0;
