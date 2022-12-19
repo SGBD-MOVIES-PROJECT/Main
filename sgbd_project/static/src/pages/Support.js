@@ -96,6 +96,7 @@ export default Contact;
 // Styles
 const StyledContactForm = styled.div`
   width: 400px;
+  height: 60vh;
   margin: auto;
   align-items: center;
   margin-bottom: 50px;

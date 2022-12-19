@@ -46,15 +46,11 @@ export default function CreateReview() {
     function postRequest(){
 
         var bodyFormData = new FormData();        
-        bodyFormData.append('movie', "1");
-        bodyFormData.append('titleReview', "Aquest es el titol de la review");
-        // bodyFormData.append('movie', movieID);
-        // bodyFormData.append('nota', value);
-        // bodyFormData.append('review', comment);
+        bodyFormData.append('titleReview', "Aquest es el titol");
+        bodyFormData.append('movie', movieID);
+        bodyFormData.append('nota', value);
+        bodyFormData.append('review', comment);
 
-
-        bodyFormData.append('review', "sdfgsf");
-        bodyFormData.append('nota', "1");
         console.log(bodyFormData.values());
         axios({
             method: "post",
