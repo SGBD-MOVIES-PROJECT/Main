@@ -175,7 +175,7 @@ class PeliculaSearchAPIView(ListAPIView):
                     movieJson['revenue']=hit.revenue
                     movieJson['runtime']=hit.runtime
                     queryset.append(movieJson)
-                 except:
+                except:
                     print (hit)
                     print("error")
                     pass
