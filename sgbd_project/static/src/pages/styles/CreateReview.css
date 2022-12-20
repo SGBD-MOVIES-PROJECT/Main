@@ -44,40 +44,4 @@
     margin-left: 5%;
 }
 
-.review-container{
-    width: 100%;
-    border-style: solid;
-    min-height: 20vh;
-    display: table;
-}
 
-.r1{
-    height: calc(20vh - (20vh * 0.7));
-    border-bottom-style: solid;
-    align-items: center;
-    display: flex;
-    padding-left: 10px;
-}
-.r2{
-    width: 10%;
-    height: calc(20vh - (20vh * 0.3));
-    float: left;
-    align-items: center;
-    display: grid;    
-    text-align: center;
-
-}
-
-.r3{
-    width: 90%;
-    height: calc(20vh - (20vh * 0.3));
-    float: left;
-}
-
-
-.r2 a{
-    font-size: 60px;
-}
-.r3{
-
-}

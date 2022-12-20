@@ -60,9 +60,7 @@ const UserProfile = () => {
           <a href="#">
             <i className="fa fa-facebook" />
           </a>
-          <p>
             <button onClick={handleClick} className="button6">EDIT PROFILE</button>
-          </p>
         </div>
       </div>
 

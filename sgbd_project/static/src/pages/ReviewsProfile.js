@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState, useContext } from "react";
 import axios from "axios";
-import './styles/CreateReview.css';
+import './styles/ReviewsProfile.css';
 import tokenService from "../api/tokenService"; 
 
 const baseUrl="http://127.0.0.1:8000/api/";
@@ -79,7 +79,7 @@ export default function ReviewsProfile() {
     return (
         
         <div className='full-cont2'>
-            <h1>My Reviews</h1>
+            <h1 className="my-reviews">My Reviews</h1>
             {showPosts}
         </div> 
     );
