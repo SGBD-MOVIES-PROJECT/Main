@@ -17,7 +17,9 @@ DBECF4
 
 
 */
-
+.titol-review-container{
+    padding: 10px;
+}
 .r1{
     background-color: #194569;
     height: calc(20vh - (20vh * 0.7));
@@ -54,13 +56,16 @@ DBECF4
 }
 .r3 p{
     padding-top: 5px;
+    padding-left: 10px;
+    font-size: large;
 }
 
 .r2 a{
     font-size: 60px;
 }
-.r1 p{
+.r1 a{
     font-size: 30px;
+    padding-left: 15px;
 }
 
 .full-cont2 h1{

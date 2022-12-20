@@ -19,7 +19,7 @@
     font-size: larger;
     font-weight: bold;
 }
-.comment, .rating, .title-searchbar{
+.comment, .rating, .title-searchbar, .review-title2{
     margin-top: 10px;
     border-radius: 5px;
     border-color: rgb(0, 0, 88);
@@ -30,15 +30,23 @@
 
 .comment{
     min-height: 12vh;
+    font-size: large;
     padding: 5px;
 }
-
+.review-title{
+    padding: 5px;
+    padding-top: 1.5rem;
+}
 .title-searchbar{
     min-height: 38px;
     padding: 5px;
 }
-
-.rating-container, .comment-container, .title-searchbar-container{
+#input-title{
+    padding: 5px;
+    font-size: larger;
+    min-height: 4vh;
+}
+.rating-container, .comment-container, .title-searchbar-container, .review-title-container{
     width: 90%;
     margin-right: 5%;
     margin-left: 5%;

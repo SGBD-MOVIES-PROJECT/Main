@@ -4,7 +4,7 @@ h1.heading1 {
     font-weight: 700;
     font-family: Poppins, sans-serif;
     color: rgb(0,0,88);
-    background-color: rgb(77, 93, 232);
+    background-color: rgb(224, 232, 255);
  }
 
  p.heading1.p__color {
@@ -12,7 +12,7 @@ h1.heading1 {
     line-height: 1.2;
     height: 30px;
     color: rgb(0,0,88);
-    background-color: rgb(77, 93, 232);
+    background-color: rgb(224, 232, 255);
     margin-bottom: 10px;
  }
 
@@ -61,7 +61,7 @@ h1.heading1 {
       }
  }
  .service.component__space {
-    background-color: rgb(77, 93, 232);
+    background-color: rgb(224, 232, 255);
  }
 .col__3{
     width: 512px;

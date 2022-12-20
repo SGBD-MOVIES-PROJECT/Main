@@ -14,11 +14,6 @@ const labels = {
     3: '3',
     4: '4',
     5: '5',
-    6: '6',
-    7: '7',
-    8: '8',
-    9: '9',
-    10: '10',
   };
 export default function CreateReview() {
     const [value, setValue] = useState(0);
@@ -26,6 +21,7 @@ export default function CreateReview() {
     const movieID = (new URLSearchParams(window.location.search)).get('id');
 
     const [comment, setComment] = useState('');
+    const [title, setTitle] = useState('');
 
     const history = useHistory();
     const baseUrl="http://127.0.0.1:8000/api/createReview/";
@@ -46,7 +42,7 @@ export default function CreateReview() {
     function postRequest(){
 
         var bodyFormData = new FormData();        
-        bodyFormData.append('titleReview', "Aquest es el titol");
+        bodyFormData.append('titleReview', title);
         bodyFormData.append('movie', movieID);
         bodyFormData.append('nota', value);
         bodyFormData.append('review', comment);
@@ -82,11 +78,16 @@ export default function CreateReview() {
                         <Rating
                             name="text-feedback"
                             value={value}
-                            defaultValue={null} max={10} 
+                            defaultValue={null} max={5} 
                             onChange={event => setValue(event.target.value)}
                         />
-                        <Box sx={{ ml: 2 }}>Rating: {labels[value]}</Box>
+                        {/* <Box sx={{ ml: 2 }}>Rating: {labels[value]}</Box> */}
                     </Box>
+                </div>
+                <div className='review-title-container'>  
+                    <p className='review-title' id='comment'>Add a title for your review: </p>
+                    <input id="input-title" className='review-title2' type="text" name="comment" onChange={event => setTitle(event.target.value)}
+                    value={title}/>
                 </div>
                 <div className='comment-container'>  
                     <p className='review-title' id='comment'>What are your thoughts about the movie? </p>

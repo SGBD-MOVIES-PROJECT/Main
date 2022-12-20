@@ -43,14 +43,14 @@ export default function ReviewsProfile() {
                     <div>
                         <div className="review-container">
                             <div className="r1">
-                                {getMovieName(todo.movie)}
+                                <a>{getMovieName(todo.movie)}</a>
                             </div>
 
                             <div className="r2">
                                 <a>{todo.nota}</a>
                             </div>
                             <div className="r3">
-                                <h3>{todo.titleReview}</h3>
+                                <h2 className="titol-review-container">{todo.titleReview}</h2>
                                 <p>{todo.review}</p> 
                             </div>
                             
