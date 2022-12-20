@@ -110,10 +110,7 @@ class PeliculaSearchAPIView(ListAPIView):
         id_ = self.request.GET.get('id')
 
 
-        print(category)
-        print(name)
-        print(language)
-        
+     
         
         #creacio de la query
         #MultiSerch
@@ -139,6 +136,8 @@ class PeliculaSearchAPIView(ListAPIView):
         
         if id_ is not None:
             s=s.filter("term", id = id_)
+            
+            
         #query de la cerca
                
         if name is not None:
@@ -162,20 +161,24 @@ class PeliculaSearchAPIView(ListAPIView):
         queryset=[]
         for response in responses:
             for hit in response:
-                
-                movieJson={}
-                movieJson['id']=hit.id
-                movieJson['budget']=hit.budget
-                movieJson['genre']=hit.genre
-                movieJson['original_language']=hit.original_language
-                movieJson['original_title']=hit.original_title
-                movieJson['overview']=hit.overview
-                movieJson['production_company']=hit.production_company
-                movieJson['production_country']=hit.production_country
-                movieJson['release_date']=hit.release_date
-                movieJson['revenue']=hit.revenue
-                movieJson['runtime']=hit.runtime
-                queryset.append(movieJson)
+                try:
+                    movieJson={}
+                    movieJson['id']=hit.id
+                    movieJson['budget']=hit.budget
+                    movieJson['genre']=hit.genre
+                    movieJson['original_language']=hit.original_language
+                    movieJson['original_title']=hit.original_title
+                    movieJson['overview']=hit.overview
+                    movieJson['production_company']=hit.production_company
+                    movieJson['production_country']=hit.production_country
+                    movieJson['release_date']=hit.release_date
+                    movieJson['revenue']=hit.revenue
+                    movieJson['runtime']=hit.runtime
+                    queryset.append(movieJson)
+                 except:
+                    print (hit)
+                    print("error")
+                    pass
        
        
         
