@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css';
+// import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -11,7 +11,9 @@ import LoginPage from "./pages/LoginPage";
 import CreateReview from "./pages/CreateReview";
 import { FooterContainer } from './React Footer/Footer'
 import UserProfile from './components/UserProfile'
-
+import Service from "./pages/Service/Service";
+import About from "./pages/About/About";
+import Gallery from "./pages/Gallery/Gallery";
 
 
 
@@ -33,6 +35,9 @@ function App() {
           <Route path='/login' component={LoginPage} />
           <Route path='/createreview' component={CreateReview} />
           <Route path='/myprofile' component={UserProfile} />
+          <Route path='/services' component={Service} />
+          <Route path='/about' component={About} />
+          <Route path='/gallery' component={Gallery} />
         </Switch>
       </Router>
       <FooterContainer />

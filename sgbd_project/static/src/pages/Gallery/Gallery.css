@@ -1,0 +1,44 @@
+.photo-list {
+    width: 90%;
+    list-style: none;
+    margin: 0;
+    margin-left: 100px;
+    background-color: rgb(77, 93, 232);
+}
+ul.photo-list {
+    width: 90%;
+    list-style: none;
+    background-color: rgb(77, 93, 232);
+    
+}
+.photo-item {
+    display: flex;
+    width: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+    margin: 20px 0;
+    background-color: rgb(77, 93, 232);
+}
+ 
+.photo-item img {
+    display: flex;
+    width: 100%;
+    border: 4px double rgba(0, 0, 0, .12);
+    background-color: rgb(77, 93, 232);
+}
+.photo img{
+    width: 500px;
+    background-color: rgb(77, 93, 232);
+    
+}
+.heder{
+    font-weight: 700;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 60px;
+    color : rgb(255, 255, 255)
+}
+.fondo{
+    background-color: rgb(77, 93, 232);
+    width: 100%;
+    height: 100%;
+}

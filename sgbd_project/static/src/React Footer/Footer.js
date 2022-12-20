@@ -9,18 +9,18 @@ export function FooterContainer() {
         <Footer>
             <Footer.Wrapper>
             <Footer.Row>
-                <Footer.Link href="#">About Us</Footer.Link>
+                <Footer.Link href="/about">About Us</Footer.Link>
     
-                <Footer.Link href="#">Services</Footer.Link>
-                <Footer.Link href="#">Contact Us</Footer.Link>
+                <Footer.Link href="/services">Services</Footer.Link>
+                <Footer.Link href="/help">Contact Us</Footer.Link>
             </Footer.Row>
             <Footer.Row>
             <Footer.Title href="#">__________________________________________________________________________________________________________</Footer.Title>
             </Footer.Row>
             <Footer.Row>
-                <Footer.Link href="https://ca-es.facebook.com/UdG.universitat/"><FaFacebook className='icon'/>Facebook</Footer.Link>
-                <Footer.Link href="https://www.instagram.com/oscarruscalleda1/"><FaInstagram className='icon'/>Instagram</Footer.Link>
-                <Footer.Link href="https://www.youtube.com/@imdb"><FaYoutube className='icon'/>Youtube</Footer.Link>
+                <Footer.Link href="https://ca-es.facebook.com/UdG.universitat/"><FaFacebook className='icon1'/>Facebook</Footer.Link>
+                <Footer.Link href="https://www.instagram.com/oscarruscalleda1/"><FaInstagram className='icon1'/>Instagram</Footer.Link>
+                <Footer.Link href="https://www.youtube.com/@imdb"><FaYoutube className='icon1'/>Youtube</Footer.Link>
                 </Footer.Row>
 
             </Footer.Wrapper>

@@ -17,10 +17,10 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Help',
-    path: '/help',
-    icon: <IoIcons.IoMdHelpCircle />,
+    title: 'Films Gallery',
+    path: '/gallery',
+    icon: <IoIcons.IoMdFilm />,
     cName: 'nav-text'
-  },
+  }
 
 ];
