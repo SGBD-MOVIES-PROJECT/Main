@@ -5,7 +5,6 @@ import './styles/ReviewsProfile.css';
 import tokenService from "../api/tokenService"; 
 
 const baseUrl="http://127.0.0.1:8000/api/";
-var originalTitle;
 export default function ReviewsProfile() {
     var bodyFormData = new FormData();
     var bodyFormData2 = new FormData();
@@ -13,19 +12,7 @@ export default function ReviewsProfile() {
     const [showPosts, setshowPosts] = useState();
   
   
-    function getMovieName(movieID) {
-        originalTitle = "init";
-        let url = "http://127.0.0.1:8000/api/pelicula/filter/?id=";
-        axios.get(url + movieID,{
-            data: bodyFormData2
-        }).then(response => {
-            originalTitle = response.data[0].original_title;
-            console.log(originalTitle);
-        })
-        
-        return originalTitle;
-    }
-
+    
     function Reviews() {
         axios.get(baseUrl+"showReviews/" ,{
             headers: {
@@ -35,6 +22,7 @@ export default function ReviewsProfile() {
         }).then(response => {
             displayData = function(){
             let tbodyData=response; 
+           
             //console.log(tbodyData);
             return(
                 <div>
@@ -43,7 +31,7 @@ export default function ReviewsProfile() {
                     <div>
                         <div className="review-container">
                             <div className="r1">
-                                <a>{getMovieName(todo.movie)}</a>
+                                <a>{todo.titleMovie}</a>
                             </div>
 
                             <div className="r2">
