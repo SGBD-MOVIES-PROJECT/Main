@@ -63,6 +63,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 class ReviewSerializer(serializers.ModelSerializer):
+    titleMovie = serializers.CharField( required=False)
 
     class Meta:
 
@@ -72,7 +73,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             'titleReview',
             'review',
             'nota',
-            
+            'titleMovie',
         )
     def create(self, validated_data):
         review = Review.objects.create(
@@ -80,8 +81,10 @@ class ReviewSerializer(serializers.ModelSerializer):
             user = self.context['request'].user,
             titleReview=validated_data['titleReview'],
             review=validated_data['review'],
-            nota=validated_data['nota'],
+            nota=validated_data['nota'],  
         )
+        review.titleMovie = review.movie.original_title
+        review.save()
         return review
 
 

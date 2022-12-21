@@ -41,7 +41,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
-        
+    titleMovie = models.CharField(max_length=100) 
     titleReview = models.CharField(max_length=30)
     review = models.CharField(max_length=300)
 
