@@ -70,18 +70,13 @@ export default function CreateReview() {
                 </div>
                 <div className='rating-container'>
                     <p className='review-title'>Rating: </p>
-                    <Box
-                        sx={{
-                        '& > legend': { mt: 2 },
-                        }}
-                        >
+                    <Box sx={{'& > legend': { mt: 2 },}} >
                         <Rating
                             name="text-feedback"
                             value={value}
                             defaultValue={null} max={5} 
                             onChange={event => setValue(event.target.value)}
                         />
-                        {/* <Box sx={{ ml: 2 }}>Rating: {labels[value]}</Box> */}
                     </Box>
                 </div>
                 <div className='review-title-container'>  

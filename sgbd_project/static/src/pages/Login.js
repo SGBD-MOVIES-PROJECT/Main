@@ -21,22 +21,17 @@ export const Login = (props) => {
     bodyFormData.append('username', username);
     bodyFormData.append('password', password);
 
-     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-      const response= await axios({
+        const response= await axios({
             method: "post",
             url:baseUrl,
             data: bodyFormData,
             headers: { "Content-Type": "application/json" },
-
-          })
-          setSuccess(true);
-          const Token = response?.data.access;
-          tokenService.updateLocalAccessToken(Token);
-          
-
-        
-
+        })
+        setSuccess(true);
+        const Token = response?.data.access;
+        tokenService.updateLocalAccessToken(Token);
     }
 
 
