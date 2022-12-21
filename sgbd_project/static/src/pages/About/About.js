@@ -12,6 +12,7 @@ function About ()  {
                         </div>
                         <div className="col__2">
                             <h1 className="about__heading">About Us</h1>
+                            <h1 className="about__heading2">_______________</h1>
                             <div className="about__meta">
                             <p className="about__text p__color">
               For instance, whenever I go back to the guest house during

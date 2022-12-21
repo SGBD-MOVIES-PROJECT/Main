@@ -1,5 +1,5 @@
 .about {
-    background-color: rgb(77, 93, 232);
+    background-color: rgb(224, 232, 255);
 }
 
 img.about__img {
@@ -10,16 +10,21 @@ img.about__img {
 }
 
 h1.about__heading {
-    margin-bottom: 10px;
     font-weight: 700;
     text-align: start;
     margin-top: 10px;
     font-family: Montserrat, sans-serif;
     font-size: 60px;
-    color : white
+    color : black
+}
+h1.about__heading2 {
+    text-align: start;
+    margin-bottom: 10px;
+    font-family: Montserrat, sans-serif;
+    color : black
 }
 .about__text.p__color{
-    color : white;
+    color : black;
     justify-content : center;
     text-justify: inter-word;
 }
@@ -30,6 +35,11 @@ button.about.btn.pointer {
     height: 55px;
     font-size: 18px;
     transition: .4 ease;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(0,0,88);
+    color: rgb(205, 210, 255);
 }
 
 .about__button {

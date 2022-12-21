@@ -12,9 +12,6 @@ import { useTheme } from '@mui/material/styles';
 
 
 
-// npm i @emailjs/browser
-
-
 const Contact = () => {
   const form = useRef();
   const [open, setOpen] = React.useState(false);
@@ -161,7 +158,7 @@ const StyledContactForm = styled.div`
     input[type="submit"] {
       margin-top: 2rem;
       cursor: pointer;
-      background: rgb(249, 105, 14);
+      background-color: rgb(0,0,88);
       color: white;
       border: none;
     }

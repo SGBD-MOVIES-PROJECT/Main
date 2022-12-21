@@ -118,6 +118,7 @@ const masonryOptions = {
 const App = () => {
   return (
     <div className="fondo"> <h1 className="heder">Gallery Films</h1>
+    <h1 className="heder2">________________________</h1>
       <Masony
         className={"photo-list"}
         elementType={"ul"}
