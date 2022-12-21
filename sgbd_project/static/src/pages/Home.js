@@ -4,6 +4,7 @@ import Dropdown from 'react-dropdown';
 import { FilterMovies } from '../components/FilterMovies';
 import { DemoCarousel } from '../components/DemoCarousel';
 import data from "../data.json"
+import Navbar from '../components/Navbar';
 
 function Home() {
   const [name, setName] = useState('');
