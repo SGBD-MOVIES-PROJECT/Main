@@ -14,9 +14,9 @@ import UserProfile from './components/UserProfile'
 import Service from "./pages/Service/Service";
 import About from "./pages/About/About";
 import Gallery from "./pages/Gallery/Gallery";
-
-
-
+import ProtectedRoute from "./api/protectedRoute";
+import tokenService from "./api/tokenService";
+import { Navigate } from "react-router";
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
 
@@ -32,7 +32,9 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/help' component={Support} />
           {/* <Route path='/filter' component={Filter} /> */}
-          <Route path='/login' component={LoginPage} />
+        
+          <Route path='/login'  component={LoginPage} />
+          
           <Route path='/createreview' component={CreateReview} />
           <Route path='/myprofile' component={UserProfile} />
           <Route path='/services' component={Service} />

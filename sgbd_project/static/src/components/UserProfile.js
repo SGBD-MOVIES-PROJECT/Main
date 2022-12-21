@@ -4,22 +4,29 @@ import axios from "axios";
 import "./UserProfile.css";
 import ReviewsProfile from "../pages/ReviewsProfile"
 import tokenService from "../api/tokenService"; 
-
+import { Redirect, useHistory } from "react-router-dom";
+import { Navigate } from "react-router";
 const baseUrl="http://127.0.0.1:8000/api/";
 
+
 const UserProfile = () => {
+ if (!tokenService.itslogged()) {
+    window.location.href = "/login";
+  }
+
 
   var bodyFormData = new FormData();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [Name, setName] = useState(''); //per get del token
-
+  const history = useHistory();
   const handleClick = event => {
     //aqui joel xd
   };
 
 
   function Profile() {
+  
     axios.get(baseUrl+"perfil/" ,{
         headers: {
             'Content-Type': 'application/json',

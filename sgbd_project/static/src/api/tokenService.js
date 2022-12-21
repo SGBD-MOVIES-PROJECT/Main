@@ -9,6 +9,21 @@ class TokenService {
         localStorage.setItem('user', JSON.stringify(JSON.stringify(Token)));
         
     }
+
+    removeLocalAccessToken() { 
+      localStorage.removeItem('user');
+    }
+
+    itslogged() {
+      const token = localStorage.getItem('user');
+      if (token) {
+        return true;
+      } else {
+        return false;
+      }
+      
+    }
+
   
 
 

@@ -12,17 +12,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { useHistory } from "react-router-dom";
 import LoginPage from '../pages/LoginPage';
+import tokenService from '../api/tokenService';
 
 
 
 function Navbar() {
   
   const [sidebar, setSidebar] = useState(false);
-
+  const [success, setSuccess] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   const history = useHistory();
   const Login = () => {
-    history.push("/login")
+    history.push("/login");
   }   
 
   return (
@@ -50,6 +51,7 @@ function Navbar() {
               </li>
               {SidebarData.map((item, index) => {
                 return (
+
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>
                       {item.icon}
@@ -60,9 +62,26 @@ function Navbar() {
               })}
             </ul>
           </nav>
-          <div className='button-div'>
-                <button type = 'submit' className='sign-in' onClick={Login}>LOG IN</button> 
+           <div className='button-div'>
+          {tokenService.itslogged() ? (
+       <button type = 'submit' className='sign-in' onClick={()=> {
+
+        tokenService.removeLocalAccessToken()  
+        history.push("/")
+        window.location.reload()
+     
+       
+
+       
+
+       }} >LOG OUT</button> 
+    ) : (
+     <button type = 'submit' className='sign-in' onClick={Login}>LOG IN</button> 
+    )}
+           
+                
           </div>
+          
         </div>
 
       </IconContext.Provider>

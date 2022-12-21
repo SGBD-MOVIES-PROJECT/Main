@@ -5,7 +5,7 @@ import { json } from "react-router";
 import AuthContext from "../context/AuthProvider";
 import Token from "../api/tokenService";
 import tokenService from '../api/tokenService';
-
+import Navbar from '../components/Navbar';
 const baseUrl="http://127.0.0.1:8000/api/login/";
 
 
@@ -32,8 +32,9 @@ export const Login = (props) => {
           })
           setSuccess(true);
           const Token = response?.data.access;
-         //setT(tokenService.getLocalAccessToken());
           tokenService.updateLocalAccessToken(Token);
+          
+
         
 
     }
