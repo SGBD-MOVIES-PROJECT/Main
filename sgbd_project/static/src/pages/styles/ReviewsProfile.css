@@ -34,7 +34,7 @@ DBECF4
 }
 .r2{
     background-color: #5f84A2;
-    width: 10%;
+    width: 13%;
     height: calc(20vh - (20vh * 0.3));
     float: left;
     align-items: center;
@@ -48,7 +48,7 @@ DBECF4
 
 .r3{
     background-color: #91AEC4;
-    width: 90%;
+    width: 87%;
     height: calc(20vh - (20vh * 0.3));
     float: left;
     border-bottom-right-radius: 5px;
@@ -64,6 +64,8 @@ DBECF4
 .r1 a{
     font-size: 30px;
     padding-left: 15px;
+    font-weight: bold;;
+    color:white;
 }
 
 .full-cont2 h1{
