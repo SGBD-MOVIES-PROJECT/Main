@@ -51,11 +51,9 @@ DBECF4
     width: 90%;
     height: calc(20vh - (20vh * 0.3));
     float: left;
-    padding: 10px;
     border-bottom-right-radius: 5px;
 }
 .r3 p{
-    padding-top: 5px;
     padding-left: 10px;
     font-size: large;
 }
