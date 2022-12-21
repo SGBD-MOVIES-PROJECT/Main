@@ -27,14 +27,11 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar/>
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/help' component={Support} />
-          {/* <Route path='/filter' component={Filter} /> */}
-        
           <Route path='/login'  component={LoginPage} />
-          
+          <Route path='/help' component={Support} />
           <Route path='/createreview' component={CreateReview} />
           <Route path='/myprofile' component={UserProfile} />
           <Route path='/services' component={Service} />
@@ -42,7 +39,7 @@ function App() {
           <Route path='/gallery' component={Gallery} />
         </Switch>
       </Router>
-      <FooterContainer />
+      <FooterContainer/>
     </>
   );
 }
