@@ -133,13 +133,13 @@ td{
 }
 table, th, td{
   border-width: 1px;
-  border-color: rgb(73, 93, 153);
+  border-color: rgb(23, 40, 92);
   /* border-radius: 3%; */
   border-style: solid;
   border-collapse: separate;
 }
 table{
-  background-color:rgb(127 148 225);
+  background-color:#91AEC4;
   margin: 3rem;
   border-radius: 1em;
   border-spacing: 0;

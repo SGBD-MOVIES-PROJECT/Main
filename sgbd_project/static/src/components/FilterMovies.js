@@ -72,6 +72,10 @@ export const FilterMovies = () => {
         if (p===0) return "---";
         else return p + "$";
     }
+    function runtimeJSON(p){
+        if (p===0) return "---";
+        else return p + " min";
+    }
 
     function pullJson(){
         console.log("before fetch");
@@ -97,6 +101,8 @@ export const FilterMovies = () => {
                         <td><a>Original language</a></td>
                         <td><a>Release date</a></td>
                         <td><a>Budget</a></td>
+                        <td><a>Runtime</a></td>
+                        <td><a>Genre</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +113,8 @@ export const FilterMovies = () => {
                         <th><p>{languageJSON(todo.original_language)}</p></th>
                         <th><p>{(todo.release_date).substring(0, todo.release_date.length - 14)}</p></th>
                         <th><p>{budgetJSON(todo.budget)}</p></th>
+                        <th><p>{runtimeJSON(todo.runtime)}</p></th>
+                        <th><p>{todo.genre}</p></th>
                     </tr>
                     ))}
                 </tbody>
