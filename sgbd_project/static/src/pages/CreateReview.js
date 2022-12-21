@@ -26,7 +26,9 @@ export default function CreateReview() {
     const history = useHistory();
     const baseUrl="http://127.0.0.1:8000/api/createReview/";
 
-
+    if (!tokenService.itslogged()) {
+        window.location.href = "/login";
+      }
     const HomePage = () => {
         console.log('rating: ', value);
         console.log('comment: ', comment);
