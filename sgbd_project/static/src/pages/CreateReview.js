@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import {useContext} from "react";
 import './styles/CreateReview.css';
 import { useHistory } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import tokenService from '../api/tokenService';
-import AuthContext from "../context/AuthProvider";
 import axios from "axios";
 
-const labels = {
-    1: '1',
-    2: '2',
-    3: '3',
-    4: '4',
-    5: '5',
-  };
 export default function CreateReview() {
     const [value, setValue] = useState(0);
     const movie = (new URLSearchParams(window.location.search)).get('movie');
@@ -30,11 +21,6 @@ export default function CreateReview() {
         window.location.href = "/login";
       }
     const HomePage = () => {
-        console.log('rating: ', value);
-        console.log('comment: ', comment);
-        console.log('movie: ', movie);
-        console.log('movie id: ', movieID);
-
         postRequest();
 
         history.push("/")
@@ -49,7 +35,6 @@ export default function CreateReview() {
         bodyFormData.append('nota', value);
         bodyFormData.append('review', comment);
 
-        console.log(bodyFormData.values());
         axios({
             method: "post",
             url: baseUrl,

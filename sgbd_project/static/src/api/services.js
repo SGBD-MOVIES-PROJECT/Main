@@ -15,9 +15,7 @@ class Services {
 
           })
         
-          const value = response?.data;
-         //alert(JSON.stringify(value[0].username));
-         
+          const value = response?.data;         
         return value[0]; 
     }
 

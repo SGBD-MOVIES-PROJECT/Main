@@ -1,12 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import './FilterMovies.css';
 import Select from 'react-select';
-import { Avatar, Box, Typography } from '@mui/material';
-import { DataGrid, gridClasses } from '@mui/x-data-grid';
-import { grey } from '@mui/material/colors';
-import { Table } from 'react-bootstrap';
-import TableUrl from './TableUrl';
-import Pagination2 from '../pages/Pagination/Pagination2';
 
 
 
@@ -57,7 +51,6 @@ export const FilterMovies = () => {
     }
     
     function languageJSON(p){
-         //return languages.find(option => option.value === p);
         if(p === 'en') return 'English';
         else if(p === 'fr') return 'French';
         else if(p === 'es') return 'Spanish';
@@ -78,17 +71,12 @@ export const FilterMovies = () => {
     }
 
     function pullJson(){
-        console.log("before fetch");
-        console.log("hola");
-        console.log(url);
         fetch(url)
         .then(response => response.json() )
         .then(responseData => {
             displayData = function(){
                 let tbodyData=responseData; 
           
-            
-            console.log(tbodyData);
             return(
                        
                 
@@ -96,7 +84,6 @@ export const FilterMovies = () => {
                 <table>
                 <thead>
                     <tr>
-                        {/* <td>Id</td> */}
                         <td><a>Original title</a></td>
                         <td><a>Original language</a></td>
                         <td><a>Release date</a></td>
@@ -108,7 +95,6 @@ export const FilterMovies = () => {
                 <tbody>
                     {   tbodyData.map(todo => (
                     <tr>
-                        {/* <th>{todo.id}</th> */}
                         <th> <a href={url2(todo.original_title, todo.id)}>{todo.original_title}</a></th>
                         <th><p>{languageJSON(todo.original_language)}</p></th>
                         <th><p>{(todo.release_date).substring(0, todo.release_date.length - 14)}</p></th>
@@ -139,14 +125,6 @@ export const FilterMovies = () => {
 
     
     const handleClick = event => {
-
-        console.log('budgetMin: ', budgetMin);
-        console.log('budgetMax: ', budgetMax);
-        console.log('title: ', title);
-        console.log('durmin: ', durmin);
-        console.log('durmax: ', durmax);
-        console.log('genre: ', genre);
-        console.log('language: ', language);
         var e = document.getElementById("fromyear");
         var value = e.value;
         console.log('fromyear: ', value);
@@ -182,9 +160,6 @@ export const FilterMovies = () => {
                 url = url + 'max_date=' + value1 + '0101'+ '&';
             }
             url = url.substring(0, url.length - 1);
-            console.log(url);
-
-        //http://127.0.0.1:8000/api/pelicula/filter/?min_date=19930101&max_date=19940101
           
         pullJson();     
     };
@@ -257,18 +232,8 @@ export const FilterMovies = () => {
                     </div>
                     <div className = 'submit-button-div'>
                         <button onClick={handleClick} className='submit-button' type = 'submit'>SUBMIT</button>
-                        {/* <TableUrl/>  */}
                     </div>
-                    
-                        {/* <ul>
-                            {items.map(item => (
-                             <li key={item.id}>
-                            {item.name} {item.price}
-                            </li>
-                            ))}
-                        </ul> */}
                         {showPosts}
-                        {/* <Pagination2 /> */}
                         <div>
                             
                 </div>

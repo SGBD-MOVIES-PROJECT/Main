@@ -136,7 +136,6 @@ td{
 table, th, td{
   border-width: 1px;
   border-color: rgb(23, 40, 92);
-  /* border-radius: 3%; */
   border-style: solid;
   border-collapse: separate;
 }
@@ -156,7 +155,6 @@ th, td{
 
 
 
-/* ----------no tocar---------- */
 
 .css-1s2u09g-control{
   border-color: rgb(0, 0, 88) !important;
