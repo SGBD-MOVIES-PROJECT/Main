@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Dropdown from 'react-dropdown';
 import { FilterMovies } from '../components/FilterMovies';
 import { DemoCarousel } from '../components/DemoCarousel';
 import data from "../data.json"
-import Navbar from '../components/Navbar';
 
 function Home() {
   const [name, setName] = useState('');
@@ -30,12 +27,6 @@ function Home() {
   );
       
 }
-{/* <form onSubmit = {handleSubmit} className = 'boto' >
-                <input onChange = {(e) => setName(e.target.value)} value = {name}></input> 
-                <Link to = "./support">
-                  <button type = 'submit'>Click to submit</button>
-                </Link>
-            </form> */}
 export default Home;
 
 

@@ -1,11 +1,7 @@
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import axios from "axios";
-import md5 from 'md5';
-import { json } from "react-router";
 import AuthContext from "../context/AuthProvider";
-import Token from "../api/tokenService";
 import tokenService from '../api/tokenService';
-import Navbar from '../components/Navbar';
 const baseUrl="http://127.0.0.1:8000/api/login/";
 
 
@@ -13,7 +9,6 @@ export const Login = (props) => {
     const [success, setSuccess] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    //const [t, setT] = useState(''); per get del token
     const { setAuth } = useContext(AuthContext);
 
 

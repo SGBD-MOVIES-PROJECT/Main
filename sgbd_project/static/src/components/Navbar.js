@@ -69,11 +69,6 @@ function Navbar() {
         tokenService.removeLocalAccessToken()  
         history.push("/")
         window.location.reload()
-     
-       
-
-       
-
        }} >LOG OUT</button> 
     ) : (
      <button type = 'submit' className='sign-in' onClick={Login}>LOG IN</button> 

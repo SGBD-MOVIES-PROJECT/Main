@@ -8,7 +8,6 @@ import tokenService from "../api/tokenService";
 const baseUrl="http://127.0.0.1:8000/api/";
 export default function ReviewsProfile() {
     var bodyFormData = new FormData();
-    var bodyFormData2 = new FormData();
     let displayData;
     const [showPosts, setshowPosts] = useState();
     const style = { color: "yellow", fontSize: "35px", marginBottom: "30px", faBorderColor: "blue" };
@@ -23,17 +22,13 @@ export default function ReviewsProfile() {
         }).then(response => {
             displayData = function(){
             let tbodyData=response; 
-           
-            //console.log(tbodyData);
             return(
                 <div>
-                    {   tbodyData.data.map(todo => (
-                        
+                    {   tbodyData.data.map(todo => (   
                     <div>
                         <div className="review-container">
                             <div className="r1">
                                 <a>{todo.titleMovie}</a>
-                               
                             </div>
 
                             <div className="r2">
