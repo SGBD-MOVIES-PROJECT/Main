@@ -36,7 +36,7 @@ function Navbar() {
               </Link>
               <h3 className='espacio'> AF </h3>
               <Typography variant="title" >
-              <img src='http://localhost:3000/logo3.png' width={50} height={60} />
+              <img src='http://localhost:80/logo3.png' width={50} height={60} />
             </Typography>
               <Link to='#' className='menu-bars'>
                 <FaIcons.FaBars onClick={showSidebar} />

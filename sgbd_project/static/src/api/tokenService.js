@@ -9,7 +9,6 @@ class TokenService {
         localStorage.setItem('user', JSON.stringify(JSON.stringify(Token)));
         
     }
-
     removeLocalAccessToken() { 
       localStorage.removeItem('user');
     }
@@ -25,8 +24,6 @@ class TokenService {
     }
 
   
-
-
   }
   
   export default new TokenService();
