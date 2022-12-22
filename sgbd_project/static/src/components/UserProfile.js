@@ -14,7 +14,7 @@ const UserProfile = () => {
     window.location.href = "/login";
   }
 
-
+  const styler = { marginRight: "15px", fontSize: "30px"};
   var bodyFormData = new FormData();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const UserProfile = () => {
 
 
   function Profile() {
-  
+    
     axios.get(baseUrl+"perfil/" ,{
         headers: {
             'Content-Type': 'application/json',
@@ -43,6 +43,7 @@ const UserProfile = () => {
     Profile(),
     []);
   return (
+    
     <div className="full-cont">
       <link
           rel="stylesheet"
@@ -56,16 +57,15 @@ const UserProfile = () => {
           <p className="title8">{username}</p>
           <p>{email}</p>
           <a href="#">
-            <i className="fa fa-dribbble" />
           </a>
           <a href="#">
-            <i className="fa fa-twitter" />
+            <i className="fa fa-twitter" style={styler}/>
           </a>
           <a href="#">
-            <i className="fa fa-instagram" />
+            <i className="fa fa-instagram" style={styler}/>
           </a>
           <a href="#">
-            <i className="fa fa-facebook" />
+            <i className="fa fa-facebook" style={styler}/>
           </a>
             <button onClick={handleClick} className="button6">EDIT PROFILE</button>
         </div>
