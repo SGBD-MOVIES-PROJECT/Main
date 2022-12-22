@@ -108,7 +108,11 @@ class PeliculaSearchAPIView(ListAPIView):
         min_date=self.request.GET.get('min_date') #yyyymmdd
         max_date=self.request.GET.get('max_date')
         id_ = self.request.GET.get('id')
-
+        budgetMin = self.request.GET.get('budgetMin')
+        budgetMax = self.request.GET.get('budgetMax')
+        durmin = self.request.GET.get('durmin')
+        durmax = self.request.GET.get('durmax')
+        
 
      
         
@@ -119,7 +123,6 @@ class PeliculaSearchAPIView(ListAPIView):
         s=Search()
         
         #filtres de la query
-        
         if min_date is not None:
             minDate=datetime.strptime(min_date, '%Y%m%d').strftime('%Y-%m-%d')
             s=s.filter("range", release_date={"gte":minDate})
@@ -137,9 +140,20 @@ class PeliculaSearchAPIView(ListAPIView):
         if id_ is not None:
             s=s.filter("term", id = id_)
             
+        if budgetMin is not None:
+            s=s.filter("range", budget={"gte":budgetMin})
+        
+        if budgetMax is not None:
+            s=s.filter("range", budget={"lte":budgetMax})
+        
+        if durmin is not None:
+            s=s.filter("range", runtime={"gte":durmin})
+        
+        if durmax is not None:
+            s=s.filter("range", runtime={"lte":durmax})
             
-        #query de la cerca
                
+        #query de la cerca    
         if name is not None:
             s=s.query("match", original_title=name)
         else:
